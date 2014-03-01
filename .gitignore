@@ -118,7 +118,7 @@ xcuserdata
 ## pod install
 ## in the App.xcodeproj directory.
 ## This ensures the latest dependencies are used.
-Pods/
+ZVideoRecorderExample/Pods/
 Podfile.lock 
  
 ####
