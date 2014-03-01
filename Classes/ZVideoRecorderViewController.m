@@ -11,7 +11,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <GLKit/GLKit.h>
 
-#import "ZVideoReviewsClient.h"
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
 #import <MBProgressHUD/MBProgressHUD.h>
@@ -36,7 +35,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     
     __block NSDictionary *_currentVideo;
     
-    ZVideoReviewsClient *_uploader;
     NSTimer *_recordingTimer;
     CGFloat _recordingDuration;
     
@@ -496,7 +494,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     if ([self.delegate respondsToSelector:@selector(videoRecordedAtPath:)]) {
         [self.delegate videoRecordedAtPath:self.videoPath];
     }
-//    [[ZVideoReviewsClient sharedInstance] uploadVideoAtPath:self.videoPath parameters:nil];
 }
 
 #pragma mark - PBJVideoPlayerControllerDelegate
