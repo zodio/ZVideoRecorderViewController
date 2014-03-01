@@ -1,3 +1,6 @@
 [submodule "RNTimer"]
 	path = Classes/RNTimer
 	url = git@github.com:zodio/RNTimer.git
+[submodule "ZVideoRecorderViewController/RNTimer"]
+	path = ZVideoRecorderViewController/RNTimer
+	url = git@github.com:zodio/RNTimer.git
