@@ -30,7 +30,13 @@
 - (IBAction)takeVideoButtonTapped:(id)sender {
     
     ZVideoRecorderViewController *videoRecorder = [ZVideoRecorderViewController videoRecorder];
+    videoRecorder.delegate = self;
     [self presentViewController:videoRecorder animated:YES completion:nil];
     
 }
+
+- (void)videoRecordedAtPath:(NSString *)path {
+    [self.infoLabel setText:[NSString stringWithFormat:@"Video recorded at path: %@", path]];
+}
+
 @end

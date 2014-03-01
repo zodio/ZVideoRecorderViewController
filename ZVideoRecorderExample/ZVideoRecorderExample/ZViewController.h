@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZVideoRecorderViewController.h"
 
-@interface ZViewController : UIViewController
+@interface ZViewController : UIViewController <VideoRecorderDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 - (IBAction)takeVideoButtonTapped:(id)sender;
