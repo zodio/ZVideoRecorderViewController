@@ -21,8 +21,19 @@
 		2911F53718C1E80B005AA130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2911F51918C1E80B005AA130 /* UIKit.framework */; };
 		2911F53F18C1E80B005AA130 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2911F53D18C1E80B005AA130 /* InfoPlist.strings */; };
 		2911F54118C1E80B005AA130 /* ZVideoRecorderExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F54018C1E80B005AA130 /* ZVideoRecorderExampleTests.m */; };
-		2911F54E18C1E914005AA130 /* ZVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F54C18C1E914005AA130 /* ZVideoRecorderViewController.m */; };
-		2911F54F18C1E914005AA130 /* ZVideoRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2911F54D18C1E914005AA130 /* ZVideoRecorderViewController.xib */; };
+		2911F56A18C1ED8B005AA130 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55218C1ED8B005AA130 /* .gitignore */; };
+		2911F56B18C1ED8B005AA130 /* encodings.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55418C1ED8B005AA130 /* encodings.xml */; };
+		2911F56C18C1ED8B005AA130 /* modules.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55518C1ED8B005AA130 /* modules.xml */; };
+		2911F56D18C1ED8B005AA130 /* RNTimer.iml in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55618C1ED8B005AA130 /* RNTimer.iml */; };
+		2911F56E18C1ED8B005AA130 /* xcode.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55718C1ED8B005AA130 /* xcode.xml */; };
+		2911F56F18C1ED8B005AA130 /* AppledocSettings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55818C1ED8B005AA130 /* AppledocSettings.plist */; };
+		2911F57018C1ED8B005AA130 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2911F55918C1ED8B005AA130 /* README.md */; };
+		2911F57118C1ED8B005AA130 /* RNTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F55D18C1ED8B005AA130 /* RNTimer.m */; };
+		2911F57218C1ED8B005AA130 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2911F56218C1ED8B005AA130 /* InfoPlist.strings */; };
+		2911F57318C1ED8B005AA130 /* RNTimerTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2911F56418C1ED8B005AA130 /* RNTimerTests-Info.plist */; };
+		2911F57418C1ED8B005AA130 /* RNTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F56618C1ED8B005AA130 /* RNTimerTests.m */; };
+		2911F57518C1ED8B005AA130 /* ZVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F56818C1ED8B005AA130 /* ZVideoRecorderViewController.m */; };
+		2911F57618C1ED8B005AA130 /* ZVideoRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2911F56918C1ED8B005AA130 /* ZVideoRecorderViewController.xib */; };
 		C7B6253348924AFA9D2DBB0B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED4ECCD0774C3AB04E770A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +44,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 2911F51118C1E80B005AA130;
 			remoteInfo = ZVideoRecorderExample;
+		};
+		2911F57918C1ED8B005AA130 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2911F55E18C1ED8B005AA130 /* RNTimer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 297685CABE4755571AAB2CE2;
+			remoteInfo = RNTimer;
+		};
+		2911F57B18C1ED8B005AA130 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2911F55E18C1ED8B005AA130 /* RNTimer.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 297685CABE4755571AAB2CF4;
+			remoteInfo = RNTimerTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,9 +81,24 @@
 		2911F53C18C1E80B005AA130 /* ZVideoRecorderExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZVideoRecorderExampleTests-Info.plist"; sourceTree = "<group>"; };
 		2911F53E18C1E80B005AA130 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2911F54018C1E80B005AA130 /* ZVideoRecorderExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderExampleTests.m; sourceTree = "<group>"; };
-		2911F54B18C1E914005AA130 /* ZVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZVideoRecorderViewController.h; sourceTree = "<group>"; };
-		2911F54C18C1E914005AA130 /* ZVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderViewController.m; sourceTree = "<group>"; };
-		2911F54D18C1E914005AA130 /* ZVideoRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZVideoRecorderViewController.xib; sourceTree = "<group>"; };
+		2911F55218C1ED8B005AA130 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		2911F55418C1ED8B005AA130 /* encodings.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = encodings.xml; sourceTree = "<group>"; };
+		2911F55518C1ED8B005AA130 /* modules.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = modules.xml; sourceTree = "<group>"; };
+		2911F55618C1ED8B005AA130 /* RNTimer.iml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RNTimer.iml; sourceTree = "<group>"; };
+		2911F55718C1ED8B005AA130 /* xcode.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = xcode.xml; sourceTree = "<group>"; };
+		2911F55818C1ED8B005AA130 /* AppledocSettings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppledocSettings.plist; sourceTree = "<group>"; };
+		2911F55918C1ED8B005AA130 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		2911F55B18C1ED8B005AA130 /* RNTimer-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNTimer-Prefix.pch"; sourceTree = "<group>"; };
+		2911F55C18C1ED8B005AA130 /* RNTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTimer.h; sourceTree = "<group>"; };
+		2911F55D18C1ED8B005AA130 /* RNTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTimer.m; sourceTree = "<group>"; };
+		2911F55E18C1ED8B005AA130 /* RNTimer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = RNTimer.xcodeproj; sourceTree = "<group>"; };
+		2911F56318C1ED8B005AA130 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2911F56418C1ED8B005AA130 /* RNTimerTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "RNTimerTests-Info.plist"; sourceTree = "<group>"; };
+		2911F56518C1ED8B005AA130 /* RNTimerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTimerTests.h; sourceTree = "<group>"; };
+		2911F56618C1ED8B005AA130 /* RNTimerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTimerTests.m; sourceTree = "<group>"; };
+		2911F56718C1ED8B005AA130 /* ZVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZVideoRecorderViewController.h; sourceTree = "<group>"; };
+		2911F56818C1ED8B005AA130 /* ZVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderViewController.m; sourceTree = "<group>"; };
+		2911F56918C1ED8B005AA130 /* ZVideoRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZVideoRecorderViewController.xib; sourceTree = "<group>"; };
 		6A25F54204314A9694F01106 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		87ED4ECCD0774C3AB04E770A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -91,7 +131,7 @@
 		2911F50918C1E80B005AA130 = {
 			isa = PBXGroup;
 			children = (
-				2911F54A18C1E914005AA130 /* Classes */,
+				2911F55018C1ED8B005AA130 /* Classes */,
 				2911F51B18C1E80B005AA130 /* ZVideoRecorderExample */,
 				2911F53A18C1E80B005AA130 /* ZVideoRecorderExampleTests */,
 				2911F51418C1E80B005AA130 /* Frameworks */,
@@ -164,15 +204,71 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2911F54A18C1E914005AA130 /* Classes */ = {
+		2911F55018C1ED8B005AA130 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				2911F54B18C1E914005AA130 /* ZVideoRecorderViewController.h */,
-				2911F54C18C1E914005AA130 /* ZVideoRecorderViewController.m */,
-				2911F54D18C1E914005AA130 /* ZVideoRecorderViewController.xib */,
+				2911F55118C1ED8B005AA130 /* RNTimer */,
+				2911F56718C1ED8B005AA130 /* ZVideoRecorderViewController.h */,
+				2911F56818C1ED8B005AA130 /* ZVideoRecorderViewController.m */,
+				2911F56918C1ED8B005AA130 /* ZVideoRecorderViewController.xib */,
 			);
 			name = Classes;
 			path = ../Classes;
+			sourceTree = "<group>";
+		};
+		2911F55118C1ED8B005AA130 /* RNTimer */ = {
+			isa = PBXGroup;
+			children = (
+				2911F55218C1ED8B005AA130 /* .gitignore */,
+				2911F55318C1ED8B005AA130 /* .idea */,
+				2911F55818C1ED8B005AA130 /* AppledocSettings.plist */,
+				2911F55918C1ED8B005AA130 /* README.md */,
+				2911F55A18C1ED8B005AA130 /* RNTimer */,
+				2911F55E18C1ED8B005AA130 /* RNTimer.xcodeproj */,
+				2911F56118C1ED8B005AA130 /* RNTimerTests */,
+			);
+			path = RNTimer;
+			sourceTree = "<group>";
+		};
+		2911F55318C1ED8B005AA130 /* .idea */ = {
+			isa = PBXGroup;
+			children = (
+				2911F55418C1ED8B005AA130 /* encodings.xml */,
+				2911F55518C1ED8B005AA130 /* modules.xml */,
+				2911F55618C1ED8B005AA130 /* RNTimer.iml */,
+				2911F55718C1ED8B005AA130 /* xcode.xml */,
+			);
+			path = .idea;
+			sourceTree = "<group>";
+		};
+		2911F55A18C1ED8B005AA130 /* RNTimer */ = {
+			isa = PBXGroup;
+			children = (
+				2911F55B18C1ED8B005AA130 /* RNTimer-Prefix.pch */,
+				2911F55C18C1ED8B005AA130 /* RNTimer.h */,
+				2911F55D18C1ED8B005AA130 /* RNTimer.m */,
+			);
+			path = RNTimer;
+			sourceTree = "<group>";
+		};
+		2911F55F18C1ED8B005AA130 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2911F57A18C1ED8B005AA130 /* libRNTimer.a */,
+				2911F57C18C1ED8B005AA130 /* RNTimerTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2911F56118C1ED8B005AA130 /* RNTimerTests */ = {
+			isa = PBXGroup;
+			children = (
+				2911F56218C1ED8B005AA130 /* InfoPlist.strings */,
+				2911F56418C1ED8B005AA130 /* RNTimerTests-Info.plist */,
+				2911F56518C1ED8B005AA130 /* RNTimerTests.h */,
+				2911F56618C1ED8B005AA130 /* RNTimerTests.m */,
+			);
+			path = RNTimerTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +337,12 @@
 			mainGroup = 2911F50918C1E80B005AA130;
 			productRefGroup = 2911F51318C1E80B005AA130 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2911F55F18C1ED8B005AA130 /* Products */;
+					ProjectRef = 2911F55E18C1ED8B005AA130 /* RNTimer.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2911F51118C1E80B005AA130 /* ZVideoRecorderExample */,
@@ -249,15 +351,41 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		2911F57A18C1ED8B005AA130 /* libRNTimer.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNTimer.a;
+			remoteRef = 2911F57918C1ED8B005AA130 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2911F57C18C1ED8B005AA130 /* RNTimerTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = RNTimerTests.octest;
+			remoteRef = 2911F57B18C1ED8B005AA130 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		2911F51018C1E80B005AA130 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2911F56A18C1ED8B005AA130 /* .gitignore in Resources */,
 				2911F52E18C1E80B005AA130 /* Images.xcassets in Resources */,
+				2911F57318C1ED8B005AA130 /* RNTimerTests-Info.plist in Resources */,
+				2911F57018C1ED8B005AA130 /* README.md in Resources */,
+				2911F56B18C1ED8B005AA130 /* encodings.xml in Resources */,
+				2911F56E18C1ED8B005AA130 /* xcode.xml in Resources */,
+				2911F57618C1ED8B005AA130 /* ZVideoRecorderViewController.xib in Resources */,
 				2911F52018C1E80B005AA130 /* InfoPlist.strings in Resources */,
-				2911F54F18C1E914005AA130 /* ZVideoRecorderViewController.xib in Resources */,
 				2911F52918C1E80B005AA130 /* Main.storyboard in Resources */,
+				2911F56F18C1ED8B005AA130 /* AppledocSettings.plist in Resources */,
+				2911F56D18C1ED8B005AA130 /* RNTimer.iml in Resources */,
+				2911F57218C1ED8B005AA130 /* InfoPlist.strings in Resources */,
+				2911F56C18C1ED8B005AA130 /* modules.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,9 +438,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
+				2911F57518C1ED8B005AA130 /* ZVideoRecorderViewController.m in Sources */,
+				2911F57118C1ED8B005AA130 /* RNTimer.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
-				2911F54E18C1E914005AA130 /* ZVideoRecorderViewController.m in Sources */,
+				2911F57418C1ED8B005AA130 /* RNTimerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +485,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				2911F53E18C1E80B005AA130 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2911F56218C1ED8B005AA130 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2911F56318C1ED8B005AA130 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
