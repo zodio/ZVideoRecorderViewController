@@ -22,8 +22,6 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIView *previewView;
-@property (weak, nonatomic) IBOutlet UILabel *instructionLabel;
-
 @property (weak, nonatomic) IBOutlet UIButton *flipCameraButton;
 @property (weak, nonatomic) UIButton *focusButton;
 @property (weak, nonatomic) IBOutlet UIView *recordingProgressView;

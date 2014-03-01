@@ -13,7 +13,6 @@
 
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
-#import <MBProgressHUD/MBProgressHUD.h>
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -268,19 +267,16 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_startCapture {
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-    _instructionLabel.text = @"Recording...";
     [[PBJVision sharedInstance] startVideoCapture];
     [self _startTimer];
 }
 
 - (void)_pauseCapture {
     [[PBJVision sharedInstance] pauseVideoCapture];
-    _instructionLabel.text = @"Paused";
     [self _stopTimer];
 }
 
 - (void)_resumeCapture {
-    _instructionLabel.text = @"Recording...";
     [[PBJVision sharedInstance] resumeVideoCapture];
     [self _startTimer];
     
@@ -448,11 +444,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     _currentVideo = videoDict;
     NSString *videoPath = [_currentVideo objectForKey:PBJVisionVideoPathKey];
     [_assetsLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
-        
-//        UIAlertView *doneAlert = [[UIAlertView alloc] initWithTitle:@"Saved" message:@"Recording saved" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
-//        [doneAlert show];
-//        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        _instructionLabel.text = @"Saved";
         [self _videoSavedAtPath:videoPath];
         self.videoPath = videoPath;
         
@@ -550,8 +541,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (alertView == _discardAlertView) {
         if (buttonIndex != _discardAlertView.cancelButtonIndex) {
-            //Upload the video
-//            [[ZVideoUploader sharedInstance] uploadVideoAtPath:_videoPath];
             [self _resetCapture];
         }
     } else if (alertView == _cancelRecordingAlertView) {
