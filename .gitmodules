@@ -1,6 +1,3 @@
 [submodule "RNTimer"]
 	path = Classes/RNTimer
 	url = git@github.com:zodio/RNTimer.git
-[submodule "Classes/RNTimer"]
-	path = Classes/RNTimer
-	url = git@github.com:zodio/RNTimer.git
