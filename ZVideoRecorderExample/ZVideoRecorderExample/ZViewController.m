@@ -30,6 +30,8 @@
 - (IBAction)takeVideoButtonTapped:(id)sender {
     
     ZVideoRecorderViewController *videoRecorder = [ZVideoRecorderViewController videoRecorder];
+    videoRecorder.maxVideoDuration = 10.0f;
+    videoRecorder.minVideoDuration = 5.0f;
     videoRecorder.delegate = self;
     [self presentViewController:videoRecorder animated:YES completion:nil];
     
