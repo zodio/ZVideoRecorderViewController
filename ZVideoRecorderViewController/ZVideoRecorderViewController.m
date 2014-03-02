@@ -106,7 +106,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [self.recordingProgressView setProgressBarColor:[UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:1.0f]];
     
     if (self.minVideoDuration) {
-        [self.recordingProgressView addStopAtPosition:(self.minVideoDuration / self.maxVideoDuration)];
+        [self.recordingProgressView addStopAtPosition:((self.maxVideoDuration - self.minVideoDuration) / self.maxVideoDuration)];
     }
     
     self.flipCameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
