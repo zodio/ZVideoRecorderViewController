@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13C59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="cancelButton" destination="GH0-bx-Zgc" id="cix-dU-m51"/>
                 <outlet property="closeButton" destination="4Yv-qI-ELV" id="VS4-Cy-uQg"/>
+                <outlet property="finishRecordingButton" destination="pGm-qz-UdI" id="AnT-Gb-aa3"/>
                 <outlet property="flipCameraButton" destination="VAy-9s-cFW" id="pHP-9h-DJJ"/>
                 <outlet property="previewView" destination="Usm-ER-yTy" id="Z1J-dk-p55"/>
                 <outlet property="recordingProgressView" destination="AsK-mc-dtV" id="sAa-ov-qXR"/>
@@ -27,30 +28,12 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsK-mc-dtV" userLabel="Progress View">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AsK-mc-dtV" userLabel="Progress View" customClass="ZProgressView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yv-qI-ELV">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="40" id="FAt-ek-wTE"/>
-                            </constraints>
-                            <state key="normal" image="x_white.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="EgU-kh-Wq4"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.99215686270000003" green="0.50196078430000002" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="4Yv-qI-ELV" firstAttribute="top" secondItem="AsK-mc-dtV" secondAttribute="top" id="Fb2-I5-2AK"/>
-                        <constraint firstItem="4Yv-qI-ELV" firstAttribute="height" secondItem="AsK-mc-dtV" secondAttribute="height" id="Fik-T1-3V8"/>
                         <constraint firstAttribute="width" constant="320" id="Mj3-Jw-Dkd"/>
-                        <constraint firstItem="4Yv-qI-ELV" firstAttribute="leading" secondItem="AsK-mc-dtV" secondAttribute="leading" id="fUz-Ru-I4X"/>
                         <constraint firstAttribute="height" constant="40" id="sUE-O2-dkS"/>
                     </constraints>
                 </view>
@@ -67,7 +50,7 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VAy-9s-cFW" userLabel="Flip Button">
-                            <rect key="frame" x="20" y="44" width="40" height="31"/>
+                            <rect key="frame" x="20" y="42" width="45" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" backgroundImage="capture_flip.png">
@@ -105,6 +88,31 @@
                         <constraint firstAttribute="height" constant="120" id="CQU-aC-A2D"/>
                     </constraints>
                 </view>
+                <button opaque="NO" alpha="0.0" contentMode="center" fixedFrame="YES" placeholderIntrinsicWidth="47" placeholderIntrinsicHeight="35" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGm-qz-UdI">
+                    <rect key="frame" x="275" y="5" width="35" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                    <state key="normal" image="arrow-proceed-blue.png">
+                        <color key="titleColor" red="0.99215686270000003" green="0.50196078430000002" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="finishRecordingButtonTapped:" destination="-1" eventType="touchUpInside" id="yCr-dE-NFn"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Yv-qI-ELV">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="FAt-ek-wTE"/>
+                    </constraints>
+                    <state key="normal" image="x_white.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="EgU-kh-Wq4"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -118,6 +126,7 @@
         </view>
     </objects>
     <resources>
+        <image name="arrow-proceed-blue.png" width="46" height="34"/>
         <image name="capture_flip.png" width="58" height="45"/>
         <image name="save_checkmark.png" width="50" height="50"/>
         <image name="video-record-button.png" width="104" height="104"/>
