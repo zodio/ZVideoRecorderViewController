@@ -36,7 +36,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     __block NSDictionary *_currentVideo;
     
     NSTimer *_recordingTimer;
-    CGFloat _recordingDuration;
+    CGFloat _recordingTimeRemaining;
     
     PBJVideoPlayerController *_videoPlayerController;
     UIAlertView *_discardAlertView;
@@ -164,28 +164,28 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     if (_activelyRecording || _videoPlayerController.playbackState == PBJVideoPlayerPlaybackStatePlaying) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
-            _recordingDuration -= TIMER_TICK;
+            _recordingTimeRemaining -= TIMER_TICK;
             
             CGFloat progress;
             if (self.mode == kVideoRecorderModeRecording) {
-                progress = _recordingDuration / self.maxVideoDuration;
+                progress = _recordingTimeRemaining / self.maxVideoDuration;
             } else {
-                progress = _recordingDuration / self.recordedVideoDuration;
+                progress = _recordingTimeRemaining / self.recordedVideoDuration;
             }
 
             progress = MAX(progress, 0);
-            _recordingDuration = MAX(_recordingDuration, 0);
+            _recordingTimeRemaining = MAX(_recordingTimeRemaining, 0);
             
-            if (_recordingDuration <= 0) {
+            if (_recordingTimeRemaining <= 0) {
                 [self handleTimerExpired];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
 
-                if (_recordingDuration < self.minVideoDuration) {
+                if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
                     [self _videoMinimumDurationRequirementMet];
                 } else {
-                    CGFloat recordingProgress = (self.maxVideoDuration - _recordingDuration) / self.minVideoDuration;
+                    CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
                     
                     [UIView animateWithDuration:0.1 animations:^{
                         [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
@@ -202,6 +202,8 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     //Allow proceeding
     [UIView animateWithDuration:0.1 animations:^{
         [self.finishRecordingButton setAlpha:1.0f];
+    } completion:^(BOOL finished) {
+        self.finishRecordingButton.enabled = YES;
     }];
 }
 
@@ -326,7 +328,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     if (!self.maxVideoDuration) {
         self.maxVideoDuration = MAX_VIDEO_DURATION;
     }
-    _recordingDuration = self.maxVideoDuration;
+    _recordingTimeRemaining = self.maxVideoDuration;
     
     [self.recordingProgressView setProgress:1.0f animated:YES];
     
@@ -338,6 +340,8 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     self.shutterButton.hidden = NO;
     self.cancelButton.hidden = YES;
     self.saveButton.hidden = YES;
+    
+    self.finishRecordingButton.enabled = NO;
     self.finishRecordingButton.alpha = 0;
     
     if ([vision isCameraDeviceAvailable:PBJCameraDeviceBack]) {
@@ -535,7 +539,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)_resetPlayback {
-    _recordingDuration = self.recordedVideoDuration;
+    _recordingTimeRemaining = self.recordedVideoDuration;
 //    [self _resetRecordingProgressViewAnimated:NO];
     [self.recordingProgressView setProgress:1.0f];
 }
@@ -563,6 +567,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
         self.recordingProgressView.showStops = YES;
     } else {
         self.finishRecordingButton.alpha = 0;
+        self.finishRecordingButton.enabled = NO;
         self.recordingProgressView.showStops = NO;
     }
 }
