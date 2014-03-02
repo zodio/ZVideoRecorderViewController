@@ -59,16 +59,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     _assetsLibrary = [[ALAssetsLibrary alloc] init];
     
     //Set up the preview view
-//    [_previewView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.width.equalTo(self.view.mas_width);
-//        make.height.equalTo(self.view.mas_width);
-//    }];
-    
-//    [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.centerY.equalTo(self.recordingProgressView.mas_centerY);
-//        make.centerX.equalTo(self.recordingProgressView.mas_centerY);
-//    }];
-    
     _previewLayer = [[PBJVision sharedInstance] previewLayer];
     _previewLayer.frame = _previewView.bounds;
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
@@ -113,8 +103,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
 //    [self.shutterButton addTarget:self action:@selector(handleShutterButtonReleased:) forControlEvents:UIControlEventTouchDragExit];
 //    [self.shutterButton addTarget:self action:@selector(handleShutterButtonReleased:) forControlEvents:UIControlEventTouchUpOutside];
 
-
-//    rgba(230, 126, 34,1.0)
     [self.recordingProgressView setProgressBarColor:[UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:1.0f]];
     
     if (self.minVideoDuration) {
@@ -145,7 +133,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
         case UIGestureRecognizerStateCancelled:
         case UIGestureRecognizerStateFailed:
         {
-            //            _activelyRecording = NO;
             if (_recording) {
                 [self _pauseCapture];
             }
@@ -206,12 +193,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                 }
                 
                 [self.recordingProgressView setProgress:progress animated:YES];
-//                [UIView animateWithDuration:TIMER_TICK animations:^{
-//                    
-//                    CGRect progressViewFrame = self.recordingProgressView.frame;
-//                    progressViewFrame.size.width = self.view.frame.size.width * progress;
-//                    self.recordingProgressView.frame = progressViewFrame;
-//                }];
             });
         });
     }
@@ -293,8 +274,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)_stopTimer {
-//    [_recordingTimer invalidate];
-//    dispatch_source_cancel(_gcdRecordingTimer);
     [_gcdRecordingTimer invalidate];
     _gcdRecordingTimer = nil;
 }
@@ -318,19 +297,9 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_endCapture {
     
-//    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-//    hud.labelText = @"Processing...";
-    
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-
-//    });
-
     self.recordedVideoDuration = [[PBJVision sharedInstance] capturedVideoSeconds];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
     [[PBJVision sharedInstance] endVideoCapture];
-//    _instructionLabel.text = @"Saving...";
-//    [self _stopTimer];
-    
 }
 
 - (void)_cancelCapture {
@@ -359,12 +328,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     }
     _recordingDuration = self.maxVideoDuration;
     
-//    [_recordingProgressView setProgress:1.0f animated:YES];
-//    CGRect progressViewFrame = self.recordingProgressView.frame;
-//    progressViewFrame.size.width = self.view.frame.size.width;
-//    [UIView animateWithDuration:0.5 animations:^{
-//        self.recordingProgressView.frame = progressViewFrame;
-//    }];
     [self.recordingProgressView setProgress:1.0f animated:YES];
     
     _longPressGestureRecognizer.enabled = YES;
@@ -443,7 +406,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (IBAction)cancelButtonTapped:(id)sender {
-//    Ask user if they want to upload
         _discardAlertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Discard?", @"Alert view title asking user if they want to discard the video")
                                                               message:NSLocalizedString(@"Discard this video and start over?", @"Alert view message - asks user if they want to discard video")
                                                              delegate:self
@@ -598,12 +560,8 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     _mode = mode;
     
     if (_mode == kVideoRecorderModeRecording) {
-        //Show min recording bar in progress view
-//        [self showMinimumMarkerInProgressView];
         self.recordingProgressView.showStops = YES;
     } else {
-        //Hide min recording bar in progress view
-//        [self hideMinimumMarkerInProgressView];
         self.finishRecordingButton.alpha = 0;
         self.recordingProgressView.showStops = NO;
     }
