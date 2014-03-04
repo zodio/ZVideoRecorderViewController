@@ -180,7 +180,23 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                 [self handleTimerExpired];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
+                        [self _videoMinimumDurationRequirementMet];
+                    } else {
+                        CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
+                        
+                        [UIView animateWithDuration:0.1 animations:^{
+                            [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
+                        }];
+                    }
+                    
+                    [self.recordingProgressView setProgress:progress animated:YES];
+                });
+            }
+            
 
+<<<<<<< HEAD
                 if (self.mode == kVideoRecorderModeRecording) {
                     if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
                         [self _videoMinimumDurationRequirementMet];
@@ -192,12 +208,11 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                         }];
                     }
                 }
-                    
-                    [self.recordingProgressView setProgress:progress animated:YES];
-                });
-            }
-            
-
+                
+                [self.recordingProgressView setProgress:progress animated:YES];
+            });
+=======
+>>>>>>> aef49ac5e0d5b74ce4e1992498402d3d7f349d0f
         });
     }
 }
