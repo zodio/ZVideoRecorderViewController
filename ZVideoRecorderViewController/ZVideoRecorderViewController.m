@@ -178,22 +178,24 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
             
             if (_recordingTimeRemaining <= 0) {
                 [self handleTimerExpired];
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
+                        [self _videoMinimumDurationRequirementMet];
+                    } else {
+                        CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
+                        
+                        [UIView animateWithDuration:0.1 animations:^{
+                            [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
+                        }];
+                    }
+                    
+                    [self.recordingProgressView setProgress:progress animated:YES];
+                });
             }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
 
-                if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
-                    [self _videoMinimumDurationRequirementMet];
-                } else {
-                    CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
-                    
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
-                    }];
-                }
-                
-                [self.recordingProgressView setProgress:progress animated:YES];
-            });
         });
     }
 }
@@ -298,6 +300,9 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)_endCapture {
+    
+    _recording = NO;
+    _activelyRecording = NO;
     
     self.recordedVideoDuration = [[PBJVision sharedInstance] capturedVideoSeconds];
     [UIApplication sharedApplication].idleTimerDisabled = NO;
@@ -441,8 +446,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)vision:(PBJVision *)vision capturedVideo:(NSDictionary *)videoDict error:(NSError *)error {
     
-    _recording = NO;
-    _activelyRecording = NO;
+
     
     if (error) {
         return;
@@ -450,11 +454,11 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     _currentVideo = videoDict;
     NSString *videoPath = [_currentVideo objectForKey:PBJVisionVideoPathKey];
-    [_assetsLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
-        [self _videoSavedAtPath:videoPath];
-        self.videoPath = videoPath;
-        
-    }];
+    [self _videoSavedAtPath:videoPath];
+    self.videoPath = videoPath;
+//    [_assetsLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
+//
+//    }];
 }
 
 - (void)_videoSavedAtPath:(NSString*)path {
@@ -498,7 +502,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 #pragma mark - PBJVideoPlayerControllerDelegate
 
 - (void)videoPlayerReady:(PBJVideoPlayerController *)videoPlayer{
-
+//    [_videoPlayerController playFromBeginning];
 }
 
 - (void)videoPlayerPlaybackStateDidChange:(PBJVideoPlayerController *)videoPlayer {
