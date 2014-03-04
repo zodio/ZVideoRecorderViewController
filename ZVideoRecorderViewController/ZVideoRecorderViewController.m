@@ -182,14 +182,16 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
             
             dispatch_async(dispatch_get_main_queue(), ^{
 
-                if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
-                    [self _videoMinimumDurationRequirementMet];
-                } else {
-                    CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
-                    
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
-                    }];
+                if (self.mode == kVideoRecorderModeRecording) {
+                    if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
+                        [self _videoMinimumDurationRequirementMet];
+                    } else {
+                        CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
+                        
+                        [UIView animateWithDuration:0.1 animations:^{
+                            [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
+                        }];
+                    }
                 }
                 
                 [self.recordingProgressView setProgress:progress animated:YES];
