@@ -95,7 +95,8 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     _tapGestureRecognizer.enabled = NO;
     [_previewView addGestureRecognizer:_tapGestureRecognizer];
      */
-    
+
+    _longPressGestureRecognizer.cancelsTouchesInView = NO;
     [self.shutterButton addGestureRecognizer:_longPressGestureRecognizer];
     
 //    [self.shutterButton addTarget:self action:@selector(handleShutterButtonPressed:) forControlEvents:UIControlEventTouchDown];
