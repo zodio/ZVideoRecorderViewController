@@ -117,6 +117,9 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                                              selector:@selector(videoPlayerPlaybackEnded)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
                                                object:nil];
+    
+    UIColor *blueControlViewBackgroundColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1.0f];
+    self.controlsContainerView.backgroundColor = blueControlViewBackgroundColor;
 }
 
 - (void)handleLongPressGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer {
