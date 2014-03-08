@@ -122,7 +122,18 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                                                object:nil];
     
     UIColor *blueControlViewBackgroundColor = [UIColor colorWithRed:52/255.0 green:152/255.0 blue:219/255.0 alpha:1.0f];
-    self.controlsContainerView.backgroundColor = blueControlViewBackgroundColor;
+    
+    [self setControlViewBackgroundColor:blueControlViewBackgroundColor forMode:kVideoRecorderModeRecording];
+    [self setControlViewBackgroundColor:[UIColor whiteColor] forMode:kVideoRecorderModePlayback];
+    
+    self.view.backgroundColor = blueControlViewBackgroundColor;
+    self.recordingProgressView.backgroundColor = [UIColor blackColor];
+    
+    [self.finishRecordingButton setTitle:NSLocalizedString(@"NEXT", @"Recording - button for finishing") forState:UIControlStateNormal];
+    [self.finishRecordingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.finishRecordingButton.titleLabel.font = [UIFont systemFontOfSize:18];
+    self.finishRecordingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    
 }
 
 - (void)handleLongPressGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer {
@@ -498,6 +509,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     [_videoPlayerController setPlaybackLoops:YES];
     [_videoPlayerController playFromBeginning];
+
 }
 
 - (void)videoRecordingComplete {
