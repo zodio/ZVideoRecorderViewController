@@ -485,8 +485,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     self.mode = kVideoRecorderModePlayback;
     [[PBJVision sharedInstance] stopPreview];
-    self.previewView.hidden = YES;
-    
+
     _videoPlayerController = [[PBJVideoPlayerController alloc] init];
     _videoPlayerController.delegate = self;
     _videoPlayerController.view.frame = self.previewView.frame;
@@ -512,6 +511,9 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)videoPlayerReady:(PBJVideoPlayerController *)videoPlayer{
 //    [_videoPlayerController playFromBeginning];
+    if (self.mode == kVideoRecorderModePlayback) {
+        self.previewView.hidden = YES;
+    }
 }
 
 - (void)videoPlayerPlaybackStateDidChange:(PBJVideoPlayerController *)videoPlayer {
