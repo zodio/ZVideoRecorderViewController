@@ -87,4 +87,6 @@ typedef enum {
 + (instancetype)videoRecorder;
 - (void)videoRecordingComplete;
 
+- (void)setControlViewBackgroundColor:(UIColor*)backgroundColor forMode:(VideoRecorderMode)mode;
+
 @end

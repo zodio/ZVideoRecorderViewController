@@ -42,6 +42,9 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     UIAlertView *_discardAlertView;
     UIAlertView *_cancelRecordingAlertView;
     RNTimer *_gcdRecordingTimer;
+    
+    UIColor *_controlViewRecordingModeBackgroundColor;
+    UIColor *_controlViewPlaybackModeBackgroundColor;
 }
 
 @end
@@ -575,10 +578,44 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     if (_mode == kVideoRecorderModeRecording) {
         self.recordingProgressView.showStops = YES;
+        [self updateControlViewBackgroundColor];
     } else {
         self.finishRecordingButton.alpha = 0;
         self.finishRecordingButton.enabled = NO;
         self.recordingProgressView.showStops = NO;
+        [self updateControlViewBackgroundColor];
+    }
+}
+
+- (void)setControlViewBackgroundColor:(UIColor *)backgroundColor forMode:(VideoRecorderMode)mode {
+    switch (mode) {
+        case kVideoRecorderModeRecording:
+            _controlViewRecordingModeBackgroundColor = backgroundColor;
+            break;
+            
+        case kVideoRecorderModePlayback:
+            _controlViewPlaybackModeBackgroundColor = backgroundColor;
+            break;
+            
+        default:
+            break;
+    }
+    
+    [self updateControlViewBackgroundColor];
+}
+
+- (void)updateControlViewBackgroundColor {
+    switch (self.mode) {
+        case kVideoRecorderModeRecording:
+            self.controlsContainerView.backgroundColor = _controlViewRecordingModeBackgroundColor;
+            break;
+            
+        case kVideoRecorderModePlayback:
+            self.controlsContainerView.backgroundColor = _controlViewPlaybackModeBackgroundColor;
+            break;
+            
+        default:
+            break;
     }
 }
 
