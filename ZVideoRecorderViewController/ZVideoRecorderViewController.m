@@ -476,9 +476,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     NSString *videoPath = [_currentVideo objectForKey:PBJVisionVideoPathKey];
     [self _videoSavedAtPath:videoPath];
     self.videoPath = videoPath;
-//    [_assetsLibrary writeVideoAtPathToSavedPhotosAlbum:[NSURL URLWithString:videoPath] completionBlock:^(NSURL *assetURL, NSError *error1) {
-//
-//    }];
 }
 
 - (void)_videoSavedAtPath:(NSString*)path {
