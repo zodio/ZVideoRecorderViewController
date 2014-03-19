@@ -507,7 +507,10 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     _videoPlayerController.videoPath = path;
     
     [_videoPlayerController setPlaybackLoops:YES];
-    [_videoPlayerController playFromBeginning];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_videoPlayerController playFromBeginning];
+    });
 
 }
 
