@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Zodio. All rights reserved.
 //
 
+#define VideoRecordingConfigurationUserDefaultsKey  @"videoRecordingConfiguration"
+
 #import "ZVideoRecorderViewController.h"
 #import <PBJVision/PBJVision.h>
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -60,6 +62,27 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     _assetsLibrary = [[ALAssetsLibrary alloc] init];
+    
+    //Set custom bitrate config (if any)
+    NSDictionary *config = [[NSUserDefaults standardUserDefaults] dictionaryForKey:VideoRecordingConfigurationUserDefaultsKey];
+    if (config) {
+        
+        NSNumber *videoBitRate = [config objectForKey:@"videoBitRate"];
+        NSNumber *audioBitRate = [config objectForKey:@"audioBitRate"];
+        NSString *AVCaptureSessionPreset = [config objectForKey:@"AVCaptureSessionPreset"];
+        
+        if ([videoBitRate isKindOfClass:[NSNumber class]]) {
+            [PBJVision sharedInstance].videoAssetBitRate = [videoBitRate floatValue];
+        }
+        
+        if ([audioBitRate isKindOfClass:[NSNumber class]]) {
+            [PBJVision sharedInstance].audioAssetBitRate = [audioBitRate floatValue];
+        }
+        
+        if ([AVCaptureSessionPreset isKindOfClass:[NSString class]]) {
+            [PBJVision sharedInstance].captureSessionPreset = AVCaptureSessionPreset;
+        }
+    }
     
     //Set up the preview view
     _previewLayer = [[PBJVision sharedInstance] previewLayer];
