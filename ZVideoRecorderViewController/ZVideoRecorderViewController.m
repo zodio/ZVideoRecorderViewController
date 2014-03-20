@@ -74,7 +74,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
         NSString *AVCaptureSessionPreset = [config objectForKey:@"AVCaptureSessionPreset"];
         
         if ([videoBitRate isKindOfClass:[NSNumber class]]) {
-            [PBJVision sharedInstance].videoAssetBitRate = [videoBitRate floatValue];
+            [PBJVision sharedInstance].videoAssetBitRate = [videoBitRate floatValue] * 8;
         }
         
         if ([audioBitRate isKindOfClass:[NSNumber class]]) {
