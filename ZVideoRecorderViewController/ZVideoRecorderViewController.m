@@ -16,6 +16,8 @@
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
 #import "ZProgressView.h"
+#import "R20PopoverView.h"
+#import "R20PopoverView+StaticShowMethods.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -133,7 +135,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [self.recordingProgressView setProgressBarColor:[UIColor colorWithRed:230/255.0 green:126/255.0 blue:34/255.0 alpha:1.0f]];
     
     if (self.minVideoDuration) {
-        [self.recordingProgressView addStopAtPosition:((self.maxVideoDuration - self.minVideoDuration) / self.maxVideoDuration)];
+        [self.recordingProgressView addStopAtPosition:(1 - ((self.maxVideoDuration - self.minVideoDuration) / self.maxVideoDuration))];
     }
     
     self.flipCameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -209,7 +211,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
             
             CGFloat progress;
             if (self.mode == kVideoRecorderModeRecording) {
-                progress = _recordingTimeRemaining / self.maxVideoDuration;
+                progress = 1 - (_recordingTimeRemaining / self.maxVideoDuration);
             } else {
                 progress = _recordingTimeRemaining / self.recordedVideoDuration;
             }
@@ -226,11 +228,14 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                     if ([PBJVision sharedInstance].capturedVideoSeconds >= self.minVideoDuration) {
                         [self _videoMinimumDurationRequirementMet];
                     } else {
-                        CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
                         
+                        //We'll keep the button enabled for now and show the tooltip when user tries to continue
+                        /*
+                        CGFloat recordingProgress = [PBJVision sharedInstance].capturedVideoSeconds / self.minVideoDuration;
                         [UIView animateWithDuration:0.1 animations:^{
                             [self.finishRecordingButton setAlpha:(0.5 * recordingProgress)];
                         }];
+                         */
                     }
                 }
                     
@@ -245,11 +250,14 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
 
 - (void)_videoMinimumDurationRequirementMet {
     //Allow proceeding
+    //Do nothing for now
+    /*
     [UIView animateWithDuration:0.1 animations:^{
         [self.finishRecordingButton setAlpha:1.0f];
     } completion:^(BOOL finished) {
         self.finishRecordingButton.enabled = YES;
     }];
+     */
 }
 
 - (void)_resetRecordingProgressViewAnimated:(BOOL)animated {
@@ -378,7 +386,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     }
     _recordingTimeRemaining = self.maxVideoDuration;
     
-    [self.recordingProgressView setProgress:1.0f animated:YES];
+    [self.recordingProgressView setProgress:0.f animated:YES];
     
     _longPressGestureRecognizer.enabled = YES;
     
@@ -391,8 +399,8 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     self.cancelButton.hidden = YES;
     self.saveButton.hidden = YES;
     
-    self.finishRecordingButton.enabled = NO;
-    self.finishRecordingButton.alpha = 0;
+    self.finishRecordingButton.enabled = YES;
+    self.finishRecordingButton.alpha = 1;
     
     if ([vision isCameraDeviceAvailable:PBJCameraDeviceBack]) {
         [vision setCameraDevice:PBJCameraDeviceBack];
@@ -442,7 +450,27 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (IBAction)finishRecordingButtonTapped:(id)sender {
-    [self handleTimerExpired];
+    
+    if ([PBJVision sharedInstance].capturedVideoSeconds < self.minVideoDuration) {
+        //Show tooltip
+        //Get point of marker/stop
+//        CGPoint minimumRecordingStop = self.recordingProgressView.
+        ZProgressViewStop *minStop = [self.recordingProgressView.stops firstObject];
+        if (minStop) {
+            CGPoint minStopViewOrigin = minStop.stopView.frame.origin;
+            CGPoint convertedMinStopViewOrigin = [self.view convertPoint:minStopViewOrigin fromView:self.recordingProgressView];
+            R20PopoverView *minimumRecordingPopover =  [R20PopoverView showPopoverAtPoint:convertedMinStopViewOrigin
+                                                                                   inView:self.view
+                                                                                 withText:NSLocalizedString(@"Record at least to this point", @"Popup that instructs user that the minimum recording length is to the white marker that this popup is pointing at")
+                                                                                 delegate:nil];
+            
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [minimumRecordingPopover dismiss];
+            });
+        }
+    } else {
+        [self handleTimerExpired];
+    }
 }
 
 - (void)showCancelRecordingAlertView {
