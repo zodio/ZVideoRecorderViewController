@@ -391,8 +391,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     _longPressGestureRecognizer.enabled = YES;
     
     PBJVision *vision = [PBJVision sharedInstance];
-    vision.videoAssetBitRate = 100000;
-    vision.captureSessionPreset = AVCaptureSessionPresetLow;
     vision.delegate = self;
     
     self.shutterButton.hidden = NO;
