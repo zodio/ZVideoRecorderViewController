@@ -20,6 +20,11 @@ typedef enum {
 @required
 - (void)videoRecordedAtPath:(NSString*)path;
 
+@optional
+- (void)videoRecordingSessionCancelled;
+- (void)videoRecordingDiscarded;
+- (void)videoPreviewAttemptedWithMinimumDurationMet:(BOOL)minimumDurationMet;
+
 @end
 
 @interface ZVideoRecorderViewController : UIViewController

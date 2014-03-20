@@ -453,6 +453,10 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
         //Show tooltip
         //Get point of marker/stop
 //        CGPoint minimumRecordingStop = self.recordingProgressView.
+        if ([self.delegate respondsToSelector:@selector(videoPreviewAttemptedWithMinimumDurationMet:)]) {
+            [self.delegate videoPreviewAttemptedWithMinimumDurationMet:NO];
+        }
+        
         ZProgressViewStop *minStop = [self.recordingProgressView.stops firstObject];
         if (minStop) {
             CGPoint minStopViewOrigin = minStop.stopView.frame.origin;
@@ -467,6 +471,9 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
             });
         }
     } else {
+        if ([self.delegate respondsToSelector:@selector(videoPreviewAttemptedWithMinimumDurationMet:)]) {
+            [self.delegate videoPreviewAttemptedWithMinimumDurationMet:YES];
+        }
         [self handleTimerExpired];
     }
 }
@@ -481,6 +488,11 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)_cancelRecording {
+    
+    if ([self.delegate respondsToSelector:@selector(videoRecordingSessionCancelled)]) {
+        [self.delegate videoRecordingSessionCancelled];
+    }
+    
     [self _cancelCapture];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -629,6 +641,9 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     if (alertView == _discardAlertView) {
         if (buttonIndex != _discardAlertView.cancelButtonIndex) {
             [self _resetCapture];
+            if ([self.delegate respondsToSelector:@selector(videoRecordingDiscarded)]) {
+                [self.delegate videoRecordingDiscarded];
+            }
         }
     } else if (alertView == _cancelRecordingAlertView) {
         if (buttonIndex != _cancelRecordingAlertView.cancelButtonIndex) {
