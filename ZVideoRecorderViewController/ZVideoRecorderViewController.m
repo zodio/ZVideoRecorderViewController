@@ -213,7 +213,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
             if (self.mode == kVideoRecorderModeRecording) {
                 progress = 1 - (_recordingTimeRemaining / self.maxVideoDuration);
             } else {
-                progress = _recordingTimeRemaining / self.recordedVideoDuration;
+                progress = 1 - (_recordingTimeRemaining / self.recordedVideoDuration);
             }
 
             progress = MAX(progress, 0);
@@ -631,7 +631,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 - (void)_resetPlayback {
     _recordingTimeRemaining = self.recordedVideoDuration;
 //    [self _resetRecordingProgressViewAnimated:NO];
-    [self.recordingProgressView setProgress:1.0f];
+    [self.recordingProgressView setProgress:0.f];
 }
 
 
