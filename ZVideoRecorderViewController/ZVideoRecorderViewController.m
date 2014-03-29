@@ -9,8 +9,8 @@
 #define VideoRecordingConfigurationUserDefaultsKey  @"videoRecordingConfiguration"
 
 #import "ZVideoRecorderViewController.h"
-#import <PBJVision/PBJVision.h>
-#import <PBJVision/PBJVisionUtilities.h>
+#import "PBJVision.h"
+#import "PBJVisionUtilities.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <GLKit/GLKit.h>
 
