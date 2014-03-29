@@ -10,6 +10,7 @@
 
 #import "ZVideoRecorderViewController.h"
 #import <PBJVision/PBJVision.h>
+#import <PBJVision/PBJVisionUtilities.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <GLKit/GLKit.h>
 
@@ -18,6 +19,7 @@
 #import "ZProgressView.h"
 #import "R20PopoverView.h"
 #import "R20PopoverView+StaticShowMethods.h"
+#import "PBJFocusView.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -34,8 +36,16 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     GLKViewController *_effectsViewController;
     
     UIView *_gestureView;
+    PBJFocusView *_focusView;
     BOOL _recording;
     BOOL _activelyRecording;
+    
+    BOOL _isFocusing;
+    BOOL _isAdjustingExposure;
+    NSDate *_lastFocusTime;
+    NSDate *_lastExposureTime;
+    BOOL _focusQueued;
+    CGPoint _queuedFocusPoint;
     
     __block NSDictionary *_currentVideo;
     
@@ -116,13 +126,15 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
      */
     
     //Tap to focus - Disabled
-    /*
     _tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGestureRecognizer:)];
     _tapGestureRecognizer.delegate = self;
     _tapGestureRecognizer.numberOfTapsRequired = 1;
-    _tapGestureRecognizer.enabled = NO;
+    _tapGestureRecognizer.enabled = YES;
     [_previewView addGestureRecognizer:_tapGestureRecognizer];
-     */
+    
+    _focusView = [[PBJFocusView alloc] initWithFrame:CGRectZero];
+    
+    [[PBJVision sharedInstance] setFocusMode:PBJFocusModeAutoFocus];
 
     _longPressGestureRecognizer.cancelsTouchesInView = NO;
     [self.shutterButton addGestureRecognizer:_longPressGestureRecognizer];
@@ -508,7 +520,33 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 
 - (void)handleTapGestureRecognizer:(UITapGestureRecognizer*)tapGestureRecognizer {
+    CGPoint tapPoint = [tapGestureRecognizer locationInView:_previewView];
     
+    // auto focus is occuring, display focus view
+    CGPoint point = tapPoint;
+    
+    CGRect focusFrame = _focusView.frame;
+#if defined(__LP64__) && __LP64__
+    focusFrame.origin.x = rint(point.x - (focusFrame.size.width * 0.5));
+    focusFrame.origin.y = rint(point.y - (focusFrame.size.height * 0.5));
+#else
+    focusFrame.origin.x = rintf(point.x - (focusFrame.size.width * 0.5f));
+    focusFrame.origin.y = rintf(point.y - (focusFrame.size.height * 0.5f));
+#endif
+    [_focusView setFrame:focusFrame];
+    
+    [_previewView addSubview:_focusView];
+    [_focusView startAnimation];
+    
+    CGPoint adjustPoint = [PBJVisionUtilities convertToPointOfInterestFromViewCoordinates:tapPoint inFrame:_previewView.frame];
+    
+    if ((!_isFocusing || [_lastFocusTime timeIntervalSinceNow] < -5.0)  &&
+        (!_isAdjustingExposure || [_lastExposureTime timeIntervalSinceNow] < -5.0)) {
+        [[PBJVision sharedInstance] focusAtAdjustedPoint:adjustPoint];
+    } else {
+        _focusQueued = YES;
+        _queuedFocusPoint = adjustPoint;
+    }
 }
 
 //Capture Delegate
@@ -540,6 +578,63 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     [self _videoSavedAtPath:videoPath];
     self.videoPath = videoPath;
 }
+
+- (void)vision:(PBJVision *)vision didChangeCleanAperture:(CGRect)cleanAperture
+{
+}
+
+- (void)visionWillStartFocus:(PBJVision *)vision
+{
+    _isFocusing = YES;
+    _lastFocusTime = [NSDate date];
+}
+
+- (void)visionDidStopFocus:(PBJVision *)vision
+{
+    _isFocusing = NO;
+    _lastFocusTime = nil;
+    
+    if (!_isAdjustingExposure) {
+        if (_focusQueued) {
+            [self _processQueuedFocus];
+        } else {
+            if (_focusView && [_focusView superview]) {
+                [_focusView stopAnimation];
+            }
+        }
+    }
+}
+
+- (void)visionWillChangeExposure:(PBJVision *)vision
+{
+    _isAdjustingExposure = YES;
+    _lastExposureTime = [NSDate date];
+}
+
+- (void)visionDidChangeExposure:(PBJVision *)vision {
+
+    _isAdjustingExposure = NO;
+    _lastExposureTime = nil;
+
+    if (!_isFocusing) {
+        if (_focusQueued) {
+            [self _processQueuedFocus];
+        } else {
+            if (_focusView && [_focusView superview]) {
+                [_focusView stopAnimation];
+            }
+        }
+    }
+}
+
+- (void)_processQueuedFocus {
+    if (_focusQueued) {
+        [[PBJVision sharedInstance] focusAtAdjustedPoint:_queuedFocusPoint];
+        _queuedFocusPoint = CGPointZero;
+        _focusQueued = NO;
+    }
+}
+
 
 - (void)_videoSavedAtPath:(NSString*)path {
 
