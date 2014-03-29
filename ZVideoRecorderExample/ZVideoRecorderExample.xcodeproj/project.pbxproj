@@ -46,6 +46,13 @@
 		2993F73318C320800039489E /* ZProgressViewStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2993F71918C320800039489E /* ZProgressViewStop.m */; };
 		2993F74718C330160039489E /* arrow-proceed-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 2993F74518C330160039489E /* arrow-proceed-blue.png */; };
 		2993F74818C330160039489E /* arrow-proceed-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2993F74618C330160039489E /* arrow-proceed-blue@2x.png */; };
+		29FE373318E6992200F401D2 /* R20PopoverView+ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE371B18E6992200F401D2 /* R20PopoverView+ActivityIndicator.m */; };
+		29FE373418E6992200F401D2 /* R20PopoverView+ShowImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE371D18E6992200F401D2 /* R20PopoverView+ShowImage.m */; };
+		29FE373518E6992200F401D2 /* R20PopoverView+ShowMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE371F18E6992200F401D2 /* R20PopoverView+ShowMethods.m */; };
+		29FE373618E6992200F401D2 /* R20PopoverView+StaticShowMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE372118E6992200F401D2 /* R20PopoverView+StaticShowMethods.m */; };
+		29FE373718E6992200F401D2 /* R20PopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE372318E6992200F401D2 /* R20PopoverView.m */; };
+		29FE374218E6AD2800F401D2 /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE374118E6AD2800F401D2 /* PBJFocusView.m */; };
+		29FE374418E6AEDA00F401D2 /* capture_focus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29FE374318E6AEDA00F401D2 /* capture_focus@2x.png */; };
 		C7B6253348924AFA9D2DBB0B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED4ECCD0774C3AB04E770A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +133,20 @@
 		2993F71918C320800039489E /* ZProgressViewStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZProgressViewStop.m; path = Classes/ZProgressViewStop.m; sourceTree = "<group>"; };
 		2993F74518C330160039489E /* arrow-proceed-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-proceed-blue.png"; sourceTree = "<group>"; };
 		2993F74618C330160039489E /* arrow-proceed-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-proceed-blue@2x.png"; sourceTree = "<group>"; };
+		29FE371A18E6992200F401D2 /* R20PopoverView+ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "R20PopoverView+ActivityIndicator.h"; sourceTree = "<group>"; };
+		29FE371B18E6992200F401D2 /* R20PopoverView+ActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "R20PopoverView+ActivityIndicator.m"; sourceTree = "<group>"; };
+		29FE371C18E6992200F401D2 /* R20PopoverView+ShowImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "R20PopoverView+ShowImage.h"; sourceTree = "<group>"; };
+		29FE371D18E6992200F401D2 /* R20PopoverView+ShowImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "R20PopoverView+ShowImage.m"; sourceTree = "<group>"; };
+		29FE371E18E6992200F401D2 /* R20PopoverView+ShowMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "R20PopoverView+ShowMethods.h"; sourceTree = "<group>"; };
+		29FE371F18E6992200F401D2 /* R20PopoverView+ShowMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "R20PopoverView+ShowMethods.m"; sourceTree = "<group>"; };
+		29FE372018E6992200F401D2 /* R20PopoverView+StaticShowMethods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "R20PopoverView+StaticShowMethods.h"; sourceTree = "<group>"; };
+		29FE372118E6992200F401D2 /* R20PopoverView+StaticShowMethods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "R20PopoverView+StaticShowMethods.m"; sourceTree = "<group>"; };
+		29FE372218E6992200F401D2 /* R20PopoverView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R20PopoverView.h; sourceTree = "<group>"; };
+		29FE372318E6992200F401D2 /* R20PopoverView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = R20PopoverView.m; sourceTree = "<group>"; };
+		29FE372418E6992200F401D2 /* R20PopoverView_Configuration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = R20PopoverView_Configuration.h; sourceTree = "<group>"; };
+		29FE374018E6AD2800F401D2 /* PBJFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJFocusView.h; sourceTree = "<group>"; };
+		29FE374118E6AD2800F401D2 /* PBJFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJFocusView.m; sourceTree = "<group>"; };
+		29FE374318E6AEDA00F401D2 /* capture_focus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "capture_focus@2x.png"; sourceTree = "<group>"; };
 		6A25F54204314A9694F01106 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		87ED4ECCD0774C3AB04E770A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,6 +179,7 @@
 		2911F50918C1E80B005AA130 = {
 			isa = PBXGroup;
 			children = (
+				29FE36FE18E6992200F401D2 /* Vendor */,
 				2911F5CF18C1EFF8005AA130 /* Images */,
 				2911F57D18C1EE76005AA130 /* ZVideoRecorderViewController */,
 				2911F51B18C1E80B005AA130 /* ZVideoRecorderExample */,
@@ -235,6 +257,8 @@
 		2911F57D18C1EE76005AA130 /* ZVideoRecorderViewController */ = {
 			isa = PBXGroup;
 			children = (
+				29FE374018E6AD2800F401D2 /* PBJFocusView.h */,
+				29FE374118E6AD2800F401D2 /* PBJFocusView.m */,
 				2993F71318C320800039489E /* ZProgressView */,
 				29319F8018C2FB040006EA5C /* Images */,
 				2911F59A18C1EE76005AA130 /* RNTimer */,
@@ -285,6 +309,7 @@
 		29319F8018C2FB040006EA5C /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				29FE374318E6AEDA00F401D2 /* capture_focus@2x.png */,
 				2993F74518C330160039489E /* arrow-proceed-blue.png */,
 				2993F74618C330160039489E /* arrow-proceed-blue@2x.png */,
 				29319FA518C2FB390006EA5C /* capture_flip.png */,
@@ -318,6 +343,33 @@
 				2993F71918C320800039489E /* ZProgressViewStop.m */,
 			);
 			path = ZProgressView;
+			sourceTree = "<group>";
+		};
+		29FE36FE18E6992200F401D2 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				29FE371918E6992200F401D2 /* PopoverView */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		29FE371918E6992200F401D2 /* PopoverView */ = {
+			isa = PBXGroup;
+			children = (
+				29FE371A18E6992200F401D2 /* R20PopoverView+ActivityIndicator.h */,
+				29FE371B18E6992200F401D2 /* R20PopoverView+ActivityIndicator.m */,
+				29FE371C18E6992200F401D2 /* R20PopoverView+ShowImage.h */,
+				29FE371D18E6992200F401D2 /* R20PopoverView+ShowImage.m */,
+				29FE371E18E6992200F401D2 /* R20PopoverView+ShowMethods.h */,
+				29FE371F18E6992200F401D2 /* R20PopoverView+ShowMethods.m */,
+				29FE372018E6992200F401D2 /* R20PopoverView+StaticShowMethods.h */,
+				29FE372118E6992200F401D2 /* R20PopoverView+StaticShowMethods.m */,
+				29FE372218E6992200F401D2 /* R20PopoverView.h */,
+				29FE372318E6992200F401D2 /* R20PopoverView.m */,
+				29FE372418E6992200F401D2 /* R20PopoverView_Configuration.h */,
+			);
+			name = PopoverView;
+			path = PopoverView/PopoverView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +461,7 @@
 				2911F5C818C1EE76005AA130 /* ZVideoRecorderViewController.xib in Resources */,
 				29319FBC18C2FB390006EA5C /* checkmark@2x.png in Resources */,
 				2911F52918C1E80B005AA130 /* Main.storyboard in Resources */,
+				29FE374418E6AEDA00F401D2 /* capture_focus@2x.png in Resources */,
 				29319FBA18C2FB390006EA5C /* checkmark-selected@2x.png in Resources */,
 				29319FC218C2FB390006EA5C /* save_checkmark@2x.png in Resources */,
 				29319FB918C2FB390006EA5C /* checkmark-selected.png in Resources */,
@@ -474,13 +527,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29FE373318E6992200F401D2 /* R20PopoverView+ActivityIndicator.m in Sources */,
 				2993F73218C320800039489E /* ZProgressView.m in Sources */,
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
+				29FE373718E6992200F401D2 /* R20PopoverView.m in Sources */,
+				29FE373518E6992200F401D2 /* R20PopoverView+ShowMethods.m in Sources */,
 				2911F5C718C1EE76005AA130 /* ZVideoRecorderViewController.m in Sources */,
 				2911F5C318C1EE76005AA130 /* RNTimer.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
 				2993F73318C320800039489E /* ZProgressViewStop.m in Sources */,
+				29FE374218E6AD2800F401D2 /* PBJFocusView.m in Sources */,
+				29FE373418E6992200F401D2 /* R20PopoverView+ShowImage.m in Sources */,
+				29FE373618E6992200F401D2 /* R20PopoverView+StaticShowMethods.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
