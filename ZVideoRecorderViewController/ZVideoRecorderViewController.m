@@ -13,6 +13,7 @@
 #import "PBJVisionUtilities.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <GLKit/GLKit.h>
+#import <Masonry/Masonry.h>
 
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
@@ -21,6 +22,8 @@
 #import "R20PopoverView+StaticShowMethods.h"
 #import "PBJFocusView.h"
 #import "ZMotionManager.h"
+#import "ZUGObjectVideoReview.h"
+#import "ZSocialNetworkSharingView.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -60,7 +63,11 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     
     UIColor *_controlViewRecordingModeBackgroundColor;
     UIColor *_controlViewPlaybackModeBackgroundColor;
+    
+    ZUGObjectVideoReview *_videoReview;
 }
+
+@property (strong, nonatomic) ZUGObjectVideoReview *videoReview;
 
 @end
 
@@ -176,6 +183,15 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
                                              selector:@selector(didRotate:)
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
+    
+    self.sharingContainerView.layer.cornerRadius = 5.0f;
+    self.sharingContainerView.backgroundColor = kZodioColorLightGray;
+    
+    self.shareViewTitleLabel.text = [NSLocalizedString(@"Share", nil) uppercaseString];
+    
+    self.videoReview = [[ZUGObjectVideoReview alloc] init];
+    self.videoReview.socialSharingManager.sharingView = self.sharingContainerView;
+    
 }
 
 - (void)didRotate:(NSNotification*)notification {
@@ -351,6 +367,8 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self _resetCapture];
     [[ZMotionManager sharedManager] startDeviceMotionUpdates];
+    
+    [self showVideoUploadControls];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -533,8 +551,8 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     vision.delegate = self;
     
     self.shutterButton.hidden = NO;
-    self.cancelButton.hidden = YES;
-    self.saveButton.hidden = YES;
+//    self.cancelButton.hidden = YES;
+//    self.saveButton.hidden = YES;
     
     self.finishRecordingButton.enabled = YES;
     self.finishRecordingButton.alpha = 1;
@@ -579,10 +597,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (IBAction)saveButtonTapped:(id)sender {
-    _longPressGestureRecognizer.enabled = NO;
-    _longPressGestureRecognizer.enabled = YES;
     [self videoRecordingComplete];
-    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)closeButtonTapped:(id)sender {
@@ -773,8 +788,24 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     self.shutterButton.hidden = YES;
     self.flipCameraButton.hidden = YES;
     
-    self.saveButton.hidden = NO;
-    self.cancelButton.hidden = NO;
+//    self.saveButton.hidden = NO;
+//    self.cancelButton.hidden = NO;
+    [self showVideoUploadControls];
+}
+
+- (void)showVideoUploadControls {
+    [self.view addSubview:self.videoUploadControlsView];
+    [self.videoUploadControlsView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.view.mas_bottom);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.top.equalTo(self.recordingProgressView.mas_bottom);
+    }];
+//    self.videoUploadControlsView.frame = self.controlsContainerView.frame;
+}
+
+- (void)hideVideoUploadControls {
+    [self.videoUploadControlsView removeFromSuperview];
 }
 
 - (void)_playVideoAtPath:(NSString*)path {
@@ -802,9 +833,17 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)videoRecordingComplete {
     
-    if ([self.delegate respondsToSelector:@selector(videoRecordedAtPath:)]) {
+    _longPressGestureRecognizer.enabled = NO;
+    _longPressGestureRecognizer.enabled = YES;
+    
+    self.videoReview.videoReviewObject.localPath = self.videoPath;
+    if ([self.delegate respondsToSelector:@selector(videoReviewComplete:)]) {
+        [self.delegate videoReviewComplete:self.videoReview];
+    } else if ([self.delegate respondsToSelector:@selector(videoRecordedAtPath:)]) {
         [self.delegate videoRecordedAtPath:self.videoPath];
     }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - PBJVideoPlayerControllerDelegate

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class ZProgressView;
+@class ZSocialNetworkSharingView;
+@class ZUGObjectVideoReview;
 
 typedef enum {
     kVideoRecorderModeRecording =   0,
@@ -21,6 +23,7 @@ typedef enum {
 - (void)videoRecordedAtPath:(NSString*)path;
 
 @optional
+- (void)videoReviewComplete:(ZUGObjectVideoReview*)videoReview;
 - (void)videoRecordingSessionCancelled;
 - (void)videoRecordingDiscarded;
 - (void)videoPreviewAttemptedWithMinimumDurationMet:(BOOL)minimumDurationMet;
@@ -80,6 +83,17 @@ typedef enum {
 @property (nonatomic) VideoRecorderMode mode;
 @property (strong, nonatomic) NSString *videoPath;
 @property (nonatomic) id<VideoRecorderDelegate> delegate;
+
+/**
+ *  The view that contains the upload, cancel and sharing buttons - shown when the user taps Next
+ */
+@property (strong, nonatomic) IBOutlet UIView *videoUploadControlsView;
+
+/**
+ *  View that contains the sharing buttons
+ */
+@property (weak, nonatomic) IBOutlet ZSocialNetworkSharingView *sharingContainerView;
+@property (weak, nonatomic) IBOutlet UILabel *shareViewTitleLabel;
 
 - (IBAction)flipCameraButtonTapped:(id)sender;
 - (IBAction)focusButtonTapped:(id)sender;
