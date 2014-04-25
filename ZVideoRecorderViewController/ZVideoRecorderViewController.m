@@ -367,8 +367,9 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self _resetCapture];
     [[ZMotionManager sharedManager] startDeviceMotionUpdates];
-    
-    [self showVideoUploadControls];
+#ifdef DEBUG
+//    [self showVideoUploadControls];
+#endif
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -579,6 +580,8 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     [[PBJVision sharedInstance] startPreview];
 }
 
+#pragma mark - UI Handlers
+
 - (IBAction)flipCameraButtonTapped:(id)sender {
     
     if ([[PBJVision sharedInstance] cameraDevice] == PBJCameraDeviceFront) {
@@ -633,6 +636,10 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
         }
         [self handleTimerExpired];
     }
+}
+
+- (IBAction)cameraRollButtonTapped:(id)sender {
+    
 }
 
 - (void)showCancelRecordingAlertView {
@@ -695,7 +702,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 //Capture Delegate
-
+#pragma mark - Capture Delegate Methods
 - (void)visionDidStartVideoCapture:(PBJVision *)vision {
     
     _recording = YES;
@@ -711,17 +718,15 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)vision:(PBJVision *)vision capturedVideo:(NSDictionary *)videoDict error:(NSError *)error {
-    
 
-    
     if (error) {
         return;
     }
     
     _currentVideo = videoDict;
     NSString *videoPath = [_currentVideo objectForKey:PBJVisionVideoPathKey];
-    [self _videoSavedAtPath:videoPath];
     self.videoPath = videoPath;
+    [self _videoSavedAtPath:videoPath];
 }
 
 - (void)vision:(PBJVision *)vision didChangeCleanAperture:(CGRect)cleanAperture
@@ -787,9 +792,6 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     self.shutterButton.hidden = YES;
     self.flipCameraButton.hidden = YES;
-    
-//    self.saveButton.hidden = NO;
-//    self.cancelButton.hidden = NO;
     [self showVideoUploadControls];
 }
 

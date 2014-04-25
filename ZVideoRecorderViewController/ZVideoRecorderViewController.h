@@ -95,6 +95,11 @@ typedef enum {
 @property (weak, nonatomic) IBOutlet ZSocialNetworkSharingView *sharingContainerView;
 @property (weak, nonatomic) IBOutlet UILabel *shareViewTitleLabel;
 
+/**
+ *  Button to allow user to browse the camera roll
+ */
+@property (weak, nonatomic) IBOutlet UIButton *cameraRollButton;
+
 - (IBAction)flipCameraButtonTapped:(id)sender;
 - (IBAction)focusButtonTapped:(id)sender;
 - (IBAction)onionButtonTapped:(id)sender;
@@ -102,6 +107,7 @@ typedef enum {
 - (IBAction)cancelButtonTapped:(id)sender;
 - (IBAction)closeButtonTapped:(id)sender;
 - (IBAction)finishRecordingButtonTapped:(id)sender;
+- (IBAction)cameraRollButtonTapped:(id)sender;
 
 + (instancetype)videoRecorder;
 - (void)videoRecordingComplete;
