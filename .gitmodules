@@ -1,9 +1,6 @@
 [submodule "ZVideoRecorderViewController/RNTimer"]
 	path = ZVideoRecorderViewController/RNTimer
 	url = git@github.com:zodio/RNTimer.git
-[submodule "ZVideoRecorderViewController/ZProgressView"]
-	path = ZVideoRecorderViewController/ZProgressView
-	url = git@github.com:zodio/ZProgressView.git
 [submodule "ZVideoRecorderExample/Vendor/PopoverView"]
 	path = ZVideoRecorderExample/Vendor/PopoverView
 	url = git@github.com:zodio/PopoverView.git
