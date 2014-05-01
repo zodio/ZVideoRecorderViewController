@@ -9,18 +9,18 @@
 #define VideoRecordingConfigurationUserDefaultsKey  @"videoRecordingConfiguration"
 
 #import "ZVideoRecorderViewController.h"
-#import <PBJVision/PBJVision.h>
-#import <PBJVision/PBJVisionUtilities.h>
+#import "PBJVision.h"
+#import "PBJVisionUtilities.h"
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <GLKit/GLKit.h>
 
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
-#import <ZProgressView/ZProgressView.h>
-#import <ZProgressView/ZProgressViewStop.h>
+#import "ZProgressView.h"
 #import "R20PopoverView.h"
 #import "R20PopoverView+StaticShowMethods.h"
 #import "PBJFocusView.h"
+#import "ZMotionManager.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -151,7 +151,9 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
         [self.recordingProgressView addStopAtPosition:(1 - ((self.maxVideoDuration - self.minVideoDuration) / self.maxVideoDuration))];
     }
     
-    //We need this to allow for playback looping - PBJVideoPlayerController only sends an 'end' notification on stop
+    self.flipCameraButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.finishRecordingButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(videoPlayerPlaybackEnded)
                                                  name:AVPlayerItemDidPlayToEndTimeNotification
@@ -169,6 +171,11 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [self.finishRecordingButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     self.finishRecordingButton.titleLabel.font = [UIFont systemFontOfSize:18];
     self.finishRecordingButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(didRotate:)
+                                                 name:UIDeviceOrientationDidChangeNotification
+                                               object:nil];
 }
 
 - (void)didRotate:(NSNotification*)notification {
@@ -210,8 +217,6 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
         default:
             break;
     }
-    
-    [self _updateCameraOrientation];
 }
 
 - (void)handleLongPressGestureRecognizer:(UILongPressGestureRecognizer*)longPressGestureRecognizer {
@@ -345,11 +350,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self _resetCapture];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(didRotate:)
-                                                 name:UIDeviceOrientationDidChangeNotification
-                                               object:nil];
+    [[ZMotionManager sharedManager] startDeviceMotionUpdates];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -357,12 +358,9 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     
     [[PBJVision sharedInstance] stopPreview];
     [_videoPlayerController stop];
+    [[ZMotionManager sharedManager] stopDeviceMotionUpdates];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:UIDeviceOrientationDidChangeNotification
-                                                  object:nil];
 }
 
 #pragma mark - Start/Stop recording methods
@@ -397,7 +395,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_startCapture {
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-//    [self _updateCameraOrientation];
+    [self _updateCameraOrientation];
     [[PBJVision sharedInstance] startVideoCapture];
     [self _startTimer];
 }
@@ -408,7 +406,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 }
 
 - (void)_resumeCapture {
-//    [self _updateCameraOrientation];
+    [self _updateCameraOrientation];
     [[PBJVision sharedInstance] resumeVideoCapture];
     [self _startTimer];
     
@@ -431,7 +429,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_updateCameraOrientation {
     PBJCameraOrientation orientation = [[PBJVision sharedInstance] cameraOrientation];
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    UIDeviceOrientation deviceOrientation = [[ZMotionManager sharedManager] actualDeviceOrientation];
     
     switch (deviceOrientation) {
         case UIDeviceOrientationPortrait:
@@ -443,11 +441,11 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
             break;
             
         case UIDeviceOrientationLandscapeLeft:
-            orientation = PBJCameraOrientationLandscapeLeft;
+            orientation = PBJCameraOrientationLandscapeRight;
             break;
             
         case UIDeviceOrientationLandscapeRight:
-            orientation = PBJCameraOrientationLandscapeRight;
+            orientation = PBJCameraOrientationLandscapeLeft;
             break;
             
         default:
@@ -457,12 +455,60 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     [[PBJVision sharedInstance] setCameraOrientation:orientation];
 }
 
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    switch (toInterfaceOrientation) {
+        case UIInterfaceOrientationPortrait:
+        {
+            [UIView animateWithDuration:duration animations:^{
+                self.flipCameraButton.transform = CGAffineTransformMakeRotation(0);
+            }];
+        }
+            break;
+            
+        case UIInterfaceOrientationPortraitUpsideDown:
+        {
+            [UIView animateWithDuration:duration animations:^{
+                self.flipCameraButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+            }];
+        }
+            break;
+            
+        case UIInterfaceOrientationLandscapeLeft:
+        {
+            [UIView animateWithDuration:duration animations:^{
+                self.flipCameraButton.transform = CGAffineTransformMakeRotation(-M_PI_4);
+            }];
+        }
+            break;
+            
+        case UIInterfaceOrientationLandscapeRight:
+        {
+            [UIView animateWithDuration:duration animations:^{
+                self.flipCameraButton.transform = CGAffineTransformMakeRotation(M_PI_4);
+            }];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+*/
+
+
 
 - (void)_resetCapture {
     
@@ -499,6 +545,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
         _focusButton.hidden = NO;
     } else {
         [vision setCameraDevice:PBJCameraDeviceFront];
+        
 #ifndef TARGET_IPHONE_SIMULATOR
         _flipCameraButton.hidden = YES;
 #endif
