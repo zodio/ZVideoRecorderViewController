@@ -16,11 +16,12 @@
 
 #import <PBJVideoPlayer/PBJVideoPlayerController.h>
 #import "RNTimer.h"
-#import "ZProgressView.h"
+#import <ZProgressView/ZProgressView.h>
+#import <ZProgressView/ZProgressViewStop.h>
 #import "R20PopoverView.h"
 #import "R20PopoverView+StaticShowMethods.h"
 #import "PBJFocusView.h"
-#import "ZMotionManager.h"
+//#import "ZMotionManager.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
@@ -350,7 +351,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
     [self _resetCapture];
-    [[ZMotionManager sharedManager] startDeviceMotionUpdates];
+//    [[ZMotionManager sharedManager] startDeviceMotionUpdates];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -358,7 +359,7 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
     
     [[PBJVision sharedInstance] stopPreview];
     [_videoPlayerController stop];
-    [[ZMotionManager sharedManager] stopDeviceMotionUpdates];
+//    [[ZMotionManager sharedManager] stopDeviceMotionUpdates];
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationSlide];
 }
@@ -429,7 +430,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_updateCameraOrientation {
     PBJCameraOrientation orientation = [[PBJVision sharedInstance] cameraOrientation];
-    UIDeviceOrientation deviceOrientation = [[ZMotionManager sharedManager] actualDeviceOrientation];
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
     
     switch (deviceOrientation) {
         case UIDeviceOrientationPortrait:
