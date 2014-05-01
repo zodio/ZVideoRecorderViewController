@@ -1,5 +1,5 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/PBJVideoPlayer" "${PODS_ROOT}/Headers/PBJVision" "${PODS_ROOT}/Headers/PopoverView" "${PODS_ROOT}/Headers/RNTimer" "${PODS_ROOT}/Headers/ZProgressView"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/PBJVideoPlayer" -isystem "${PODS_ROOT}/Headers/PBJVision" -isystem "${PODS_ROOT}/Headers/PopoverView" -isystem "${PODS_ROOT}/Headers/RNTimer" -isystem "${PODS_ROOT}/Headers/ZProgressView"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/PBJVideoPlayer" "${PODS_ROOT}/Headers/PBJVision" "${PODS_ROOT}/Headers/ZPopoverView" "${PODS_ROOT}/Headers/ZProgressView" "${PODS_ROOT}/Headers/ZTimer"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers" -isystem "${PODS_ROOT}/Headers/AFNetworking" -isystem "${PODS_ROOT}/Headers/PBJVideoPlayer" -isystem "${PODS_ROOT}/Headers/PBJVision" -isystem "${PODS_ROOT}/Headers/ZPopoverView" -isystem "${PODS_ROOT}/Headers/ZProgressView" -isystem "${PODS_ROOT}/Headers/ZTimer"
 OTHER_LDFLAGS = -ObjC -framework AVFoundation -framework CoreGraphics -framework CoreMedia -framework CoreVideo -framework Foundation -framework ImageIO -framework MobileCoreServices -framework OpenGLES -framework QuartzCore -framework Security -framework SystemConfiguration -framework UIKit
 PODS_ROOT = ${SRCROOT}/Pods

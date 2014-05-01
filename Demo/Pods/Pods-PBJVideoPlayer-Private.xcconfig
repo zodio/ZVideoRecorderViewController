@@ -1,5 +1,5 @@
 #include "Pods-PBJVideoPlayer.xcconfig"
 GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/PBJVideoPlayer" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/PBJVideoPlayer" "${PODS_ROOT}/Headers/PBJVision" "${PODS_ROOT}/Headers/PopoverView" "${PODS_ROOT}/Headers/RNTimer" "${PODS_ROOT}/Headers/ZProgressView"
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/PBJVideoPlayer" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/PBJVideoPlayer" "${PODS_ROOT}/Headers/PBJVision" "${PODS_ROOT}/Headers/ZPopoverView" "${PODS_ROOT}/Headers/ZProgressView" "${PODS_ROOT}/Headers/ZTimer"
 OTHER_LDFLAGS = -ObjC ${PODS_PBJVIDEOPLAYER_OTHER_LDFLAGS}
 PODS_ROOT = ${SRCROOT}
