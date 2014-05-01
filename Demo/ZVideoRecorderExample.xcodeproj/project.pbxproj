@@ -43,6 +43,9 @@
 		298FCE541912E66400F3D5B5 /* video_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE3F1912E66400F3D5B5 /* video_cancel@2x.png */; };
 		298FCE551912E66400F3D5B5 /* x_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE401912E66400F3D5B5 /* x_white.png */; };
 		298FCE561912E66400F3D5B5 /* x_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE411912E66400F3D5B5 /* x_white@2x.png */; };
+		298FCE5D1912E98700F3D5B5 /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 298FCE591912E98700F3D5B5 /* PBJFocusView.m */; };
+		298FCE5E1912E98700F3D5B5 /* ZVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298FCE5B1912E98700F3D5B5 /* ZVideoRecorderViewController.m */; };
+		298FCE5F1912E98700F3D5B5 /* ZVideoRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE5C1912E98700F3D5B5 /* ZVideoRecorderViewController.xib */; };
 		C7B6253348924AFA9D2DBB0B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED4ECCD0774C3AB04E770A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +101,11 @@
 		298FCE3F1912E66400F3D5B5 /* video_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video_cancel@2x.png"; sourceTree = "<group>"; };
 		298FCE401912E66400F3D5B5 /* x_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_white.png; sourceTree = "<group>"; };
 		298FCE411912E66400F3D5B5 /* x_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_white@2x.png"; sourceTree = "<group>"; };
+		298FCE581912E98700F3D5B5 /* PBJFocusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBJFocusView.h; sourceTree = "<group>"; };
+		298FCE591912E98700F3D5B5 /* PBJFocusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBJFocusView.m; sourceTree = "<group>"; };
+		298FCE5A1912E98700F3D5B5 /* ZVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZVideoRecorderViewController.h; sourceTree = "<group>"; };
+		298FCE5B1912E98700F3D5B5 /* ZVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderViewController.m; sourceTree = "<group>"; };
+		298FCE5C1912E98700F3D5B5 /* ZVideoRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZVideoRecorderViewController.xib; sourceTree = "<group>"; };
 		6A25F54204314A9694F01106 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		87ED4ECCD0774C3AB04E770A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -131,6 +139,7 @@
 		2911F50918C1E80B005AA130 = {
 			isa = PBXGroup;
 			children = (
+				298FCE571912E98700F3D5B5 /* Classes */,
 				298FCE2C1912E66400F3D5B5 /* Assets */,
 				2911F51B18C1E80B005AA130 /* ZVideoRecorderExample */,
 				2911F53A18C1E80B005AA130 /* ZVideoRecorderExampleTests */,
@@ -234,6 +243,19 @@
 			path = ../Assets;
 			sourceTree = "<group>";
 		};
+		298FCE571912E98700F3D5B5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				298FCE581912E98700F3D5B5 /* PBJFocusView.h */,
+				298FCE591912E98700F3D5B5 /* PBJFocusView.m */,
+				298FCE5A1912E98700F3D5B5 /* ZVideoRecorderViewController.h */,
+				298FCE5B1912E98700F3D5B5 /* ZVideoRecorderViewController.m */,
+				298FCE5C1912E98700F3D5B5 /* ZVideoRecorderViewController.xib */,
+			);
+			name = Classes;
+			path = ../Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,6 +340,7 @@
 				298FCE421912E66400F3D5B5 /* arrow-proceed-blue.png in Resources */,
 				298FCE441912E66400F3D5B5 /* capture_flip.png in Resources */,
 				2911F52E18C1E80B005AA130 /* Images.xcassets in Resources */,
+				298FCE5F1912E98700F3D5B5 /* ZVideoRecorderViewController.xib in Resources */,
 				298FCE4E1912E66400F3D5B5 /* clapboard@2x.png in Resources */,
 				298FCE4B1912E66400F3D5B5 /* clapboard-selected.png in Resources */,
 				298FCE461912E66400F3D5B5 /* capture_focus@2x.png in Resources */,
@@ -388,7 +411,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				298FCE5D1912E98700F3D5B5 /* PBJFocusView.m in Sources */,
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
+				298FCE5E1912E98700F3D5B5 /* ZVideoRecorderViewController.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
 			);
