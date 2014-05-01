@@ -42,8 +42,7 @@
 		29319FC618C2FB390006EA5C /* video-record-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29319FB418C2FB390006EA5C /* video-record-button@2x.png */; };
 		29319FC718C2FB390006EA5C /* x_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 29319FB518C2FB390006EA5C /* x_white.png */; };
 		29319FC818C2FB390006EA5C /* x_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 29319FB618C2FB390006EA5C /* x_white@2x.png */; };
-		2993F73218C320800039489E /* ZProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2993F71718C320800039489E /* ZProgressView.m */; };
-		2993F73318C320800039489E /* ZProgressViewStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 2993F71918C320800039489E /* ZProgressViewStop.m */; };
+		2977BF6E18E743D500F59C3F /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2977BF6D18E743D500F59C3F /* Accelerate.framework */; };
 		2993F74718C330160039489E /* arrow-proceed-blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 2993F74518C330160039489E /* arrow-proceed-blue.png */; };
 		2993F74818C330160039489E /* arrow-proceed-blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2993F74618C330160039489E /* arrow-proceed-blue@2x.png */; };
 		29FE373318E6992200F401D2 /* R20PopoverView+ActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 29FE371B18E6992200F401D2 /* R20PopoverView+ActivityIndicator.m */; };
@@ -127,10 +126,7 @@
 		29319FB418C2FB390006EA5C /* video-record-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video-record-button@2x.png"; sourceTree = "<group>"; };
 		29319FB518C2FB390006EA5C /* x_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = x_white.png; sourceTree = "<group>"; };
 		29319FB618C2FB390006EA5C /* x_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_white@2x.png"; sourceTree = "<group>"; };
-		2993F71618C320800039489E /* ZProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZProgressView.h; path = Classes/ZProgressView.h; sourceTree = "<group>"; };
-		2993F71718C320800039489E /* ZProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZProgressView.m; path = Classes/ZProgressView.m; sourceTree = "<group>"; };
-		2993F71818C320800039489E /* ZProgressViewStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZProgressViewStop.h; path = Classes/ZProgressViewStop.h; sourceTree = "<group>"; };
-		2993F71918C320800039489E /* ZProgressViewStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZProgressViewStop.m; path = Classes/ZProgressViewStop.m; sourceTree = "<group>"; };
+		2977BF6D18E743D500F59C3F /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		2993F74518C330160039489E /* arrow-proceed-blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-proceed-blue.png"; sourceTree = "<group>"; };
 		2993F74618C330160039489E /* arrow-proceed-blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-proceed-blue@2x.png"; sourceTree = "<group>"; };
 		29FE371A18E6992200F401D2 /* R20PopoverView+ActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "R20PopoverView+ActivityIndicator.h"; sourceTree = "<group>"; };
@@ -156,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2977BF6E18E743D500F59C3F /* Accelerate.framework in Frameworks */,
 				2911F51818C1E80B005AA130 /* CoreGraphics.framework in Frameworks */,
 				2911F51A18C1E80B005AA130 /* UIKit.framework in Frameworks */,
 				2911F51618C1E80B005AA130 /* Foundation.framework in Frameworks */,
@@ -202,6 +199,7 @@
 		2911F51418C1E80B005AA130 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2977BF6D18E743D500F59C3F /* Accelerate.framework */,
 				2911F51518C1E80B005AA130 /* Foundation.framework */,
 				2911F51718C1E80B005AA130 /* CoreGraphics.framework */,
 				2911F51918C1E80B005AA130 /* UIKit.framework */,
@@ -259,7 +257,6 @@
 			children = (
 				29FE374018E6AD2800F401D2 /* PBJFocusView.h */,
 				29FE374118E6AD2800F401D2 /* PBJFocusView.m */,
-				2993F71318C320800039489E /* ZProgressView */,
 				29319F8018C2FB040006EA5C /* Images */,
 				2911F59A18C1EE76005AA130 /* RNTimer */,
 				2911F5A718C1EE76005AA130 /* ZVideoRecorderViewController.h */,
@@ -332,17 +329,6 @@
 				29319FB618C2FB390006EA5C /* x_white@2x.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		2993F71318C320800039489E /* ZProgressView */ = {
-			isa = PBXGroup;
-			children = (
-				2993F71618C320800039489E /* ZProgressView.h */,
-				2993F71718C320800039489E /* ZProgressView.m */,
-				2993F71818C320800039489E /* ZProgressViewStop.h */,
-				2993F71918C320800039489E /* ZProgressViewStop.m */,
-			);
-			path = ZProgressView;
 			sourceTree = "<group>";
 		};
 		29FE36FE18E6992200F401D2 /* Vendor */ = {
@@ -528,7 +514,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				29FE373318E6992200F401D2 /* R20PopoverView+ActivityIndicator.m in Sources */,
-				2993F73218C320800039489E /* ZProgressView.m in Sources */,
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
 				29FE373718E6992200F401D2 /* R20PopoverView.m in Sources */,
 				29FE373518E6992200F401D2 /* R20PopoverView+ShowMethods.m in Sources */,
@@ -536,7 +521,6 @@
 				2911F5C318C1EE76005AA130 /* RNTimer.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
-				2993F73318C320800039489E /* ZProgressViewStop.m in Sources */,
 				29FE374218E6AD2800F401D2 /* PBJFocusView.m in Sources */,
 				29FE373418E6992200F401D2 /* R20PopoverView+ShowImage.m in Sources */,
 				29FE373618E6992200F401D2 /* R20PopoverView+StaticShowMethods.m in Sources */,
