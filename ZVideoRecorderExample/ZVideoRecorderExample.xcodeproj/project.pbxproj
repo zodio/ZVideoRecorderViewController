@@ -21,7 +21,6 @@
 		2911F53718C1E80B005AA130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2911F51918C1E80B005AA130 /* UIKit.framework */; };
 		2911F53F18C1E80B005AA130 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2911F53D18C1E80B005AA130 /* InfoPlist.strings */; };
 		2911F54118C1E80B005AA130 /* ZVideoRecorderExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F54018C1E80B005AA130 /* ZVideoRecorderExampleTests.m */; };
-		2911F5C318C1EE76005AA130 /* RNTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F59D18C1EE76005AA130 /* RNTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2911F5C718C1EE76005AA130 /* ZVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2911F5A818C1EE76005AA130 /* ZVideoRecorderViewController.m */; };
 		2911F5C818C1EE76005AA130 /* ZVideoRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2911F5A918C1EE76005AA130 /* ZVideoRecorderViewController.xib */; };
 		29319FB718C2FB390006EA5C /* capture_flip.png in Resources */ = {isa = PBXBuildFile; fileRef = 29319FA518C2FB390006EA5C /* capture_flip.png */; };
@@ -85,8 +84,6 @@
 		2911F53C18C1E80B005AA130 /* ZVideoRecorderExampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ZVideoRecorderExampleTests-Info.plist"; sourceTree = "<group>"; };
 		2911F53E18C1E80B005AA130 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2911F54018C1E80B005AA130 /* ZVideoRecorderExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderExampleTests.m; sourceTree = "<group>"; };
-		2911F59C18C1EE76005AA130 /* RNTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTimer.h; sourceTree = "<group>"; };
-		2911F59D18C1EE76005AA130 /* RNTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTimer.m; sourceTree = "<group>"; };
 		2911F5A718C1EE76005AA130 /* ZVideoRecorderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZVideoRecorderViewController.h; sourceTree = "<group>"; };
 		2911F5A818C1EE76005AA130 /* ZVideoRecorderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZVideoRecorderViewController.m; sourceTree = "<group>"; };
 		2911F5A918C1EE76005AA130 /* ZVideoRecorderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZVideoRecorderViewController.xib; sourceTree = "<group>"; };
@@ -258,23 +255,12 @@
 				29FE374018E6AD2800F401D2 /* PBJFocusView.h */,
 				29FE374118E6AD2800F401D2 /* PBJFocusView.m */,
 				29319F8018C2FB040006EA5C /* Images */,
-				2911F59A18C1EE76005AA130 /* RNTimer */,
 				2911F5A718C1EE76005AA130 /* ZVideoRecorderViewController.h */,
 				2911F5A818C1EE76005AA130 /* ZVideoRecorderViewController.m */,
 				2911F5A918C1EE76005AA130 /* ZVideoRecorderViewController.xib */,
 			);
 			name = ZVideoRecorderViewController;
 			path = ../ZVideoRecorderViewController;
-			sourceTree = "<group>";
-		};
-		2911F59A18C1EE76005AA130 /* RNTimer */ = {
-			isa = PBXGroup;
-			children = (
-				2911F59C18C1EE76005AA130 /* RNTimer.h */,
-				2911F59D18C1EE76005AA130 /* RNTimer.m */,
-			);
-			name = RNTimer;
-			path = RNTimer/RNTimer;
 			sourceTree = "<group>";
 		};
 		2911F5CF18C1EFF8005AA130 /* Images */ = {
@@ -518,7 +504,6 @@
 				29FE373718E6992200F401D2 /* R20PopoverView.m in Sources */,
 				29FE373518E6992200F401D2 /* R20PopoverView+ShowMethods.m in Sources */,
 				2911F5C718C1EE76005AA130 /* ZVideoRecorderViewController.m in Sources */,
-				2911F5C318C1EE76005AA130 /* RNTimer.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
 				29FE374218E6AD2800F401D2 /* PBJFocusView.m in Sources */,
