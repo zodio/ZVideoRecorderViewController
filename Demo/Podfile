@@ -1,0 +1,14 @@
+xcodeproj 'ZVideoRecorderExample.xcodeproj'
+
+platform :ios, '6.0'
+
+# ignore all warnings from all pods
+inhibit_all_warnings!
+
+pod 'PBJVision', '0.1.8'
+pod 'PBJVideoPlayer'
+pod 'AFNetworking', '~> 1.3.3'
+pod 'ZProgressView', '0.2.1'
+pod 'RNTimer', :git => 'https://github.com/zodio/RNTimer.git'
+pod 'PopoverView', :git => 'https://github.com/zodio/PopoverView.git'
+pod 'ZVideoRecorder', :path => '../'
