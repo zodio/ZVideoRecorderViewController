@@ -16,13 +16,11 @@ Pod::Spec.new do |s|
   s.author             = { "Jai Govindani" => "jai@zodio.com" }
   s.social_media_url   = "http://twitter.com/govindani"
 
-  s.platform     = :ios
   s.platform     = :ios, "6.0"
 
   s.source       = { :git => "https://github.com/zodio/ZVideoRecorderViewController.git", :tag => "0.0.6" }
-  s.source_files = 'Classes/*.{h,m,xib}'
-  s.exclude_files = "Classes/Exclude"
-  s.resources = 'Assets'
+  s.source_files = 'Classes/*.{h,m}'
+  s.resources = 'Assets', 'Classes/*.xib'
 
   s.frameworks = "Accelerate", "CoreGraphics"
   s.requires_arc = true
