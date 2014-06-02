@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZVideoRecorder"
-  s.version      = "0.0.6"
+  s.version      = "0.0.7"
   s.summary      = "A Video Recorder for the Zodio iPhone app."
 
   s.description  = <<-DESC
@@ -18,7 +18,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "6.0"
 
-  s.source       = { :git => "https://github.com/zodio/ZVideoRecorderViewController.git", :tag => "0.0.6" }
+  s.source       = { :git => "https://github.com/zodio/ZVideoRecorderViewController.git", :tag => "#{s.version}" }
   s.source_files = 'Classes/*.{h,m}'
   s.resources = 'Assets', 'Classes/*.xib'
 
