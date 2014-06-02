@@ -85,11 +85,11 @@ PBJVisionDelegate, PBJVideoPlayerControllerDelegate, UIAlertViewDelegate>
         NSString *AVCaptureSessionPreset = [config objectForKey:@"AVCaptureSessionPreset"];
         
         if ([videoBitRate isKindOfClass:[NSNumber class]]) {
-            [PBJVision sharedInstance].videoAssetBitRate = [videoBitRate floatValue] * 8;
+            [PBJVision sharedInstance].videoBitRate = [videoBitRate floatValue] * 8;
         }
         
         if ([audioBitRate isKindOfClass:[NSNumber class]]) {
-            [PBJVision sharedInstance].audioAssetBitRate = [audioBitRate floatValue];
+            [PBJVision sharedInstance].audioBitRate = [audioBitRate floatValue];
         }
         
         if ([AVCaptureSessionPreset isKindOfClass:[NSString class]]) {
@@ -672,7 +672,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
     
     if ((!_isFocusing || [_lastFocusTime timeIntervalSinceNow] < -5.0)  &&
         (!_isAdjustingExposure || [_lastExposureTime timeIntervalSinceNow] < -5.0)) {
-        [[PBJVision sharedInstance] focusAtAdjustedPoint:adjustPoint];
+        [[PBJVision sharedInstance] focusAtAdjustedPointOfInterest:adjustPoint];
     } else {
         _focusQueued = YES;
         _queuedFocusPoint = adjustPoint;
@@ -759,7 +759,7 @@ dispatch_source_t CreateDispatchTimer(uint64_t interval,
 
 - (void)_processQueuedFocus {
     if (_focusQueued) {
-        [[PBJVision sharedInstance] focusAtAdjustedPoint:_queuedFocusPoint];
+        [[PBJVision sharedInstance] focusAtAdjustedPointOfInterest:_queuedFocusPoint];
         _queuedFocusPoint = CGPointZero;
         _focusQueued = NO;
     }
