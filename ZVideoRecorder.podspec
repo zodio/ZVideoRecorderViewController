@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'ZTimer', '0.0.3'
   s.dependency "ZPopoverView", '0.0.1'
-  s.dependency "PBJVision", '0.1.8'
+  s.dependency "PBJVision", '0.2.1'
   s.dependency "PBJVideoPlayer"
   s.dependency "AFNetworking", '1.3.4'
   s.dependency "ZProgressView", '0.2.1'
