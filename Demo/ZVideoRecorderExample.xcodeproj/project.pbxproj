@@ -43,8 +43,6 @@
 		298FCE541912E66400F3D5B5 /* video_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE3F1912E66400F3D5B5 /* video_cancel@2x.png */; };
 		298FCE551912E66400F3D5B5 /* x_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE401912E66400F3D5B5 /* x_white.png */; };
 		298FCE561912E66400F3D5B5 /* x_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE411912E66400F3D5B5 /* x_white@2x.png */; };
-		298FCE5D1912E98700F3D5B5 /* PBJFocusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 298FCE591912E98700F3D5B5 /* PBJFocusView.m */; };
-		298FCE5E1912E98700F3D5B5 /* ZVideoRecorderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 298FCE5B1912E98700F3D5B5 /* ZVideoRecorderViewController.m */; };
 		298FCE5F1912E98700F3D5B5 /* ZVideoRecorderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 298FCE5C1912E98700F3D5B5 /* ZVideoRecorderViewController.xib */; };
 		C7B6253348924AFA9D2DBB0B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 87ED4ECCD0774C3AB04E770A /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -303,7 +301,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Z;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Zodio;
 				TargetAttributes = {
 					2911F53218C1E80B005AA130 = {
@@ -411,9 +409,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				298FCE5D1912E98700F3D5B5 /* PBJFocusView.m in Sources */,
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
-				298FCE5E1912E98700F3D5B5 /* ZVideoRecorderViewController.m in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
 			);
@@ -469,7 +465,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -508,7 +503,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -570,7 +564,6 @@
 		2911F54818C1E80B005AA130 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZVideoRecorderExample.app/ZVideoRecorderExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -593,7 +586,6 @@
 		2911F54918C1E80B005AA130 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZVideoRecorderExample.app/ZVideoRecorderExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

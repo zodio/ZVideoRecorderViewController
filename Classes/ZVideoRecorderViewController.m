@@ -21,7 +21,6 @@
 #import "R20PopoverView.h"
 #import "R20PopoverView+StaticShowMethods.h"
 #import "PBJFocusView.h"
-//#import "ZMotionManager.h"
 
 #define MAX_VIDEO_DURATION  5.0f
 #define TIMER_TICK          0.1f
