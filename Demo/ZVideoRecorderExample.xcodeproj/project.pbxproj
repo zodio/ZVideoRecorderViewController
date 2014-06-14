@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29025139194C7D1A00A0D683 /* ZSwiftViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29025138194C7D1A00A0D683 /* ZSwiftViewController.swift */; };
+		29025178194C876400A0D683 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29025177194C876400A0D683 /* AssetsLibrary.framework */; };
 		2911F51618C1E80B005AA130 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2911F51518C1E80B005AA130 /* Foundation.framework */; };
 		2911F51818C1E80B005AA130 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2911F51718C1E80B005AA130 /* CoreGraphics.framework */; };
 		2911F51A18C1E80B005AA130 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2911F51918C1E80B005AA130 /* UIKit.framework */; };
@@ -50,6 +52,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2902513A194C800200A0D683 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2911F50A18C1E80B005AA130 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2911F51118C1E80B005AA130;
+			remoteInfo = ZVideoRecorderExample;
+		};
+		2902513C194C800200A0D683 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2911F50A18C1E80B005AA130 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2911F51118C1E80B005AA130;
+			remoteInfo = ZVideoRecorderExample;
+		};
 		2911F53818C1E80B005AA130 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2911F50A18C1E80B005AA130 /* Project object */;
@@ -60,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		29025137194C7D1900A0D683 /* ZVideoRecorderExample-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ZVideoRecorderExample-Bridging-Header.h"; sourceTree = "<group>"; };
+		29025138194C7D1A00A0D683 /* ZSwiftViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZSwiftViewController.swift; sourceTree = "<group>"; };
+		29025177194C876400A0D683 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		2911F51218C1E80B005AA130 /* ZVideoRecorderExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZVideoRecorderExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2911F51518C1E80B005AA130 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2911F51718C1E80B005AA130 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -115,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29025178194C876400A0D683 /* AssetsLibrary.framework in Frameworks */,
 				2977BF6E18E743D500F59C3F /* Accelerate.framework in Frameworks */,
 				2911F51818C1E80B005AA130 /* CoreGraphics.framework in Frameworks */,
 				2911F51A18C1E80B005AA130 /* UIKit.framework in Frameworks */,
@@ -161,6 +181,7 @@
 		2911F51418C1E80B005AA130 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29025177194C876400A0D683 /* AssetsLibrary.framework */,
 				2977BF6D18E743D500F59C3F /* Accelerate.framework */,
 				2911F51518C1E80B005AA130 /* Foundation.framework */,
 				2911F51718C1E80B005AA130 /* CoreGraphics.framework */,
@@ -181,6 +202,8 @@
 				2911F52B18C1E80B005AA130 /* ZViewController.m */,
 				2911F52D18C1E80B005AA130 /* Images.xcassets */,
 				2911F51C18C1E80B005AA130 /* Supporting Files */,
+				29025138194C7D1A00A0D683 /* ZSwiftViewController.swift */,
+				29025137194C7D1900A0D683 /* ZVideoRecorderExample-Bridging-Header.h */,
 			);
 			path = ZVideoRecorderExample;
 			sourceTree = "<group>";
@@ -290,6 +313,8 @@
 			);
 			dependencies = (
 				2911F53918C1E80B005AA130 /* PBXTargetDependency */,
+				2902513B194C800200A0D683 /* PBXTargetDependency */,
+				2902513D194C800200A0D683 /* PBXTargetDependency */,
 			);
 			name = ZVideoRecorderExampleTests;
 			productName = ZVideoRecorderExampleTests;
@@ -303,7 +328,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = Z;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = Zodio;
 				TargetAttributes = {
 					2911F53218C1E80B005AA130 = {
@@ -414,6 +439,7 @@
 				298FCE5D1912E98700F3D5B5 /* PBJFocusView.m in Sources */,
 				2911F52218C1E80B005AA130 /* main.m in Sources */,
 				298FCE5E1912E98700F3D5B5 /* ZVideoRecorderViewController.m in Sources */,
+				29025139194C7D1A00A0D683 /* ZSwiftViewController.swift in Sources */,
 				2911F52C18C1E80B005AA130 /* ZViewController.m in Sources */,
 				2911F52618C1E80B005AA130 /* ZAppDelegate.m in Sources */,
 			);
@@ -430,6 +456,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2902513B194C800200A0D683 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2911F51118C1E80B005AA130 /* ZVideoRecorderExample */;
+			targetProxy = 2902513A194C800200A0D683 /* PBXContainerItemProxy */;
+		};
+		2902513D194C800200A0D683 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2911F51118C1E80B005AA130 /* ZVideoRecorderExample */;
+			targetProxy = 2902513C194C800200A0D683 /* PBXContainerItemProxy */;
+		};
 		2911F53918C1E80B005AA130 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2911F51118C1E80B005AA130 /* ZVideoRecorderExample */;
@@ -469,11 +505,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_MODULES_AUTOLINK = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -499,7 +535,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -508,11 +544,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_MODULES_AUTOLINK = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -532,6 +568,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -543,11 +580,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZVideoRecorderExample/ZVideoRecorderExample-Prefix.pch";
 				INFOPLIST_FILE = "ZVideoRecorderExample/ZVideoRecorderExample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZVideoRecorderExample/ZVideoRecorderExample-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -558,19 +599,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ZVideoRecorderExample/ZVideoRecorderExample-Prefix.pch";
 				INFOPLIST_FILE = "ZVideoRecorderExample/ZVideoRecorderExample-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ZVideoRecorderExample/ZVideoRecorderExample-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		2911F54818C1E80B005AA130 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A25F54204314A9694F01106 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZVideoRecorderExample.app/ZVideoRecorderExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -592,8 +636,8 @@
 		};
 		2911F54918C1E80B005AA130 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A25F54204314A9694F01106 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/ZVideoRecorderExample.app/ZVideoRecorderExample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
