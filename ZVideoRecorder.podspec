@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ZVideoRecorder"
-  s.version      = "0.0.9"
+  s.version      = "0.1.1"
   s.summary      = "A Video Recorder for the Zodio iPhone app."
 
   s.description  = <<-DESC
