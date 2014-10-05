@@ -30,7 +30,7 @@ Pod::Spec.new do |s|
   s.dependency "PBJVision", '0.2.1'
   s.dependency "PBJVideoPlayer"
   s.dependency "AFNetworking", '1.3.4'
-  s.dependency "ZProgressView", '0.2.1'
+  s.dependency "ZProgressView"
   
 
 end
